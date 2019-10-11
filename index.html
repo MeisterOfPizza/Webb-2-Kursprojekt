@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="styles/index.css"></link>
+</head>
+<body>
+    <div>
+        <div id="game-scene" class="game-scene" style="touch-action: none;">
+            <div id="game-ui-container">
+                <h2 id="score-text">Score: 0</h2>
+                <h3 id="time-alive-text">Time alive: 0 seconds</h3>
+            </div>
+            <div class="controls-container">
+                <div class="lane-btn" onclick="switchLane(false)"></div>
+                <div class="lane-btn" onclick="switchLane(true)"></div>
+            </div>
+            <div id="game-over-container" style="display:none">
+                <h2>Game over!</h2>
+                <a class="shine-effect" onclick="retry()">Retry</a>
+                <a class="shine-effect" href="index.html">Home</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://threejs.org/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://threejs.org/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://threejs.org/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://threejs.org/examples/js/shaders/FXAAShader.js"></script>
+    <script src="https://threejs.org/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://threejs.org/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src=""></script>
+    <script src="scripts/GLTFLoader.js"></script>
+    <script src="scripts/game.js"></script>
+</body>
+</html>
