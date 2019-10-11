@@ -73,7 +73,7 @@ function collisionWithPlayer(hitbox) {
 
 $(document).ready(function() {
     init();
-    //addComposer(); 
+    addComposer();
     onWindowResize();
 });
 
@@ -119,10 +119,10 @@ function init() {
     timeAliveText = $("#time-alive-text").first();
 
     $(document).keypress(function(e) {
-        if (e.key == "a") {
+        if (e.key.toLowerCase() == "a") {
             switchLane(false);
         }
-        else if (e.key == "d") {
+        else if (e.key.toLowerCase() == "d") {
             switchLane(true);
         }
     });
@@ -179,10 +179,10 @@ function onWindowResize() {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.zoom = camera.aspect / 1.77 * 0.75;
     camera.updateProjectionMatrix();
-    /*chromaticAberration.uniforms["resolution"].value = new THREE.Vector2(
+    chromaticAberration.uniforms["resolution"].value = new THREE.Vector2(
 		container.clientWidth,
 		container.clientHeight
-	);*/
+	);
     renderer.setSize(container.clientWidth, container.clientHeight);
 }
 
@@ -197,8 +197,8 @@ function animate() {
 
     ship.updateGameObjectCollider();
 
-    renderer.render(scene, camera);
-    //composer.render();
+    //renderer.render(scene, camera);
+    composer.render();
 }
 
 function update() {
@@ -375,15 +375,13 @@ function gameOver() {
     despawnAllObjects(coins);
 }
 
-/*
-
 let composer, renderPass, effect, shaderPass, mesh, gui, light;
 
 let bloomPass, chromaticAberrationFrag, chromaticAberration;
 
 let params = {
-	exposure: 1,
-	bloomStrength: 1,
+	exposure: 0.5,
+	bloomStrength: 0.3,
 	bloomThreshold: 0,
 	bloomRadius: 0
 };
@@ -494,4 +492,3 @@ function addComposer() {
 	composer.addPass(antialiasPass);
 	antialiasPass.renderToScreen = true;
 }
-*/
