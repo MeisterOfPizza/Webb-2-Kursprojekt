@@ -1,8 +1,16 @@
+// Essentials //
 let camera, scene, renderer, container, directionalLight;
 let ship;
 let laneIndex = 1;
 let asteroids;
 let coins;
+
+// Post processing //
+
+let composer;
+let renderPass, bloomPass, chromaticAberrationPass;
+
+// Game cycle //
 
 let time          = 0;
 let deltaTime     = 0;
@@ -16,6 +24,8 @@ let lastlaneObjectSpawnCooldown = 0;
 let isGameOver = false;
 let gameOverContainer;
 
+// Gameplay //
+
 let   score                   = 0;
 let   timeAlive               = 0;
 let   normalizedDifficulty    = 0;
@@ -27,6 +37,8 @@ const maxDifficultyTimeAlive  = 3600; // One factor raised to the power of 2.
 let scoreText;
 let timeAliveText;
 
+// Constants //
+
 const laneWidth         = 1;
 const laneObjectSpawnZ  = -20;
 const laneObjectTargetZ = 3;
@@ -36,6 +48,7 @@ const coinCount         = 10;
 const coinRadius        = 0.1;
 const coinHeight        = 0.05;
 
+// Helper class.
 class GameObject {
     constructor(obj, geometry) {
         this.obj = obj;
@@ -73,7 +86,7 @@ function collisionWithPlayer(hitbox) {
 
 $(document).ready(function() {
     init();
-    //addComposer(); 
+    addComposer();
     onWindowResize();
 });
 
@@ -100,8 +113,10 @@ function loadingDone() {
 }
 
 function init() {
+    container = $("#game-scene")[0];
+
     canvas = $(".canvas")[0];
-    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 100);
+    camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 100);
     camera.position.set(0, 0.5, 1);
     camera.lookAt(0, 0.35, -2);
 
@@ -112,17 +127,16 @@ function init() {
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    container = $("#game-scene")[0];
     container.appendChild(renderer.domElement);
 
     scoreText = $("#score-text").first();
     timeAliveText = $("#time-alive-text").first();
 
     $(document).keypress(function(e) {
-        if (e.key == "a") {
+        if (e.key.toLowerCase() == "a") {
             switchLane(false);
         }
-        else if (e.key == "d") {
+        else if (e.key.toLowerCase() == "d") {
             switchLane(true);
         }
     });
@@ -177,12 +191,16 @@ function init() {
 
 function onWindowResize() {
     camera.aspect = container.clientWidth / container.clientHeight;
-    camera.zoom = camera.aspect / 1.77 * 0.75;
+    camera.zoom   = camera.aspect / 1.77 * 0.75;
     camera.updateProjectionMatrix();
-    /*chromaticAberration.uniforms["resolution"].value = new THREE.Vector2(
+
+    chromaticAberrationPass.uniforms["resolution"].value = new THREE.Vector2(
 		container.clientWidth,
 		container.clientHeight
-	);*/
+    );
+    bloomPass.setSize(container.clientWidth, container.clientHeight);
+
+    composer.setSize(container.clientWidth, container.clientHeight);
     renderer.setSize(container.clientWidth, container.clientHeight);
 }
 
@@ -197,8 +215,7 @@ function animate() {
 
     ship.updateGameObjectCollider();
 
-    renderer.render(scene, camera);
-    //composer.render();
+    composer.render();
 }
 
 function update() {
@@ -305,7 +322,7 @@ function createAsteroidPool() {
 
     for (let i = 0; i < asteroidCount; i++) {
         geometry = new THREE.SphereGeometry(asteroidRadius, asteroidRadius, asteroidRadius);
-        material = new THREE.MeshNormalMaterial();
+        material = new THREE.MeshBasicMaterial({ color: 0xf70f4d });
 
         const obj = new THREE.Mesh(geometry, material);
         obj.visible = false;
@@ -375,19 +392,6 @@ function gameOver() {
     despawnAllObjects(coins);
 }
 
-/*
-
-let composer, renderPass, effect, shaderPass, mesh, gui, light;
-
-let bloomPass, chromaticAberrationFrag, chromaticAberration;
-
-let params = {
-	exposure: 1,
-	bloomStrength: 1,
-	bloomThreshold: 0,
-	bloomRadius: 0
-};
-
 function addComposer() {
 	//composer
 	composer = new THREE.EffectComposer(renderer);
@@ -395,13 +399,13 @@ function addComposer() {
 	//passes
 	renderPass = new THREE.RenderPass(scene, camera);
 
-	chromaticAberration = {
+	let chromaticAberration = {
 		uniforms: {
 			tDiffuse: { type: "t", value: null },
 			resolution: {
 				value: new THREE.Vector2(
-					window.innerWidth,
-					window.innerHeight
+					container.clientWidth,
+					container.clientHeight
 				)
 			},
 			power: { value: 0.5 }
@@ -414,7 +418,7 @@ function addComposer() {
         void main() {
     
           vUv = uv;
-          gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     
         }
         `,
@@ -447,18 +451,18 @@ function addComposer() {
 				float lo = step(t,0.5);
 				float hi = 1.0-lo;
 				float w = linterp( remap( t, 1.0/6.0, 5.0/6.0 ) );
-				ret = vec4(lo,1.0,hi, 1.) * vec4(1.0-w, w, 1.0-w, 1.);
+				ret = vec4(lo,1.0,hi, 1.0) * vec4(1.0-w, w, 1.0-w, 1.);
 
 				return pow( ret, vec4(1.0/2.2) );
 			}
 
-			const float max_distort = 2.2;
-			const int num_iter = 12;
+			const float max_distort = 0.8;
+			const int num_iter = 8;
 			const float reci_num_iter_f = 1.0 / float(num_iter);
 
 			void main()
 			{	
-				vec2 uv=(gl_FragCoord.xy/resolution.xy*.5)+.25;
+				vec2 uv=(gl_FragCoord.xy/resolution.xy*1.0);
 
 				vec4 sumcol = vec4(0.0);
 				vec4 sumw = vec4(0.0);	
@@ -474,17 +478,17 @@ function addComposer() {
 			}
       `
 	};
-	let chromaticAberrationPass = new THREE.ShaderPass(chromaticAberration);
+	chromaticAberrationPass = new THREE.ShaderPass(chromaticAberration);
 
 	bloomPass = new THREE.UnrealBloomPass(
-		new THREE.Vector2(window.innerWidth, window.innerHeight),
+		new THREE.Vector2(container.clientWidth, container.clientHeight),
 		1.5,
 		0.4,
 		0.85
-	);
-	bloomPass.threshold = params.bloomThreshold;
-	bloomPass.strength = params.bloomStrength;
-	bloomPass.radius = params.bloomRadius;
+    );
+	bloomPass.threshold = 0.0;
+	bloomPass.strength  = 1.0;
+	bloomPass.radius    = 1.0;
 
 	let antialiasPass = new THREE.ShaderPass(THREE.FXAAShader);
 
@@ -494,4 +498,3 @@ function addComposer() {
 	composer.addPass(antialiasPass);
 	antialiasPass.renderToScreen = true;
 }
-*/
