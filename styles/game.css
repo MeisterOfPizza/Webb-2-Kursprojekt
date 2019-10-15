@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "turret-road";
+  src: url("../fonts/Turret_Road/TurretRoad-Regular.ttf");
+}
+
+.shine-effect {
+  background-repeat: no-repeat;
+  background-position: -120px -120px, 0 0;
+  background-image: -webkit-gradient(linear, right bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(37%, rgba(255, 255, 255, 0.4)), color-stop(45%, rgba(255, 255, 255, 0.8)), color-stop(50%, rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to top left, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 37%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0) 50%);
+  background-size: 250% 250%, 100% 100%;
+  -webkit-transition: background-position 0s ease;
+  transition: background-position 0s ease;
+}
+
+.shine-effect:hover {
+  background-position: 0 0, 0 0;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+body {
+  margin: 0;
+  font-family: turret-road, Arial, Helvetica, sans-serif;
+}
+
+div.game-scene {
+  width: 100vw;
+  height: 100vh;
+  z-index: -64;
+}
+
+div.game-scene div.controls-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  -ms-grid-rows: 1;
+      grid-template-rows: 1;
+      grid-template-areas: "left-btn right-btn";
+}
+
+div.game-scene div.controls-container div.lane-btn:first-of-type {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: left-btn;
+}
+
+div.game-scene div.controls-container div.lane-btn:last-of-type {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: right-btn;
+}
+
+div.game-scene div.controls-container div.lane-btn {
+  width: 100%;
+  height: 100%;
+}
+
+div.game-scene div#game-ui-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+div.game-scene div#game-ui-container h2 {
+  color: white;
+  font-size: 35px;
+}
+
+div.game-scene div#game-ui-container h3 {
+  color: white;
+  font-size: 25px;
+}
+
+div.game-scene div#game-over-container {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: 50% 75px auto;
+      grid-template-rows: 50% 75px auto;
+      grid-template-areas: "title" "btn-left" "btn-right";
+}
+
+@media (min-width: 768px) {
+  div.game-scene div#game-over-container {
+    -ms-grid-columns: 50% 50%;
+        grid-template-columns: 50% 50%;
+    -ms-grid-rows: 50% 50%;
+        grid-template-rows: 50% 50%;
+        grid-template-areas: "title title" "btn-left btn-right";
+  }
+}
+
+div.game-scene div#game-over-container h2 {
+  font-size: 75px;
+  color: black;
+  text-shadow: 3px 3px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+  letter-spacing: 0.0625em;
+  text-transform: uppercase;
+  text-align: center;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: title;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+div.game-scene div#game-over-container a {
+  background-color: #bcecff;
+  border-radius: 25px;
+  display: inline-block;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 40px;
+  margin: 0 25px;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+  position: relative;
+  pointer-events: all;
+}
+
+div.game-scene div#game-over-container a:first-of-type {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: btn-left;
+}
+
+@media (min-width: 768px) {
+  div.game-scene div#game-over-container a:first-of-type {
+    -ms-grid-column-align: end;
+        justify-self: end;
+  }
+}
+
+div.game-scene div#game-over-container a:last-of-type {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: btn-right;
+}
+
+@media (min-width: 768px) {
+  div.game-scene div#game-over-container a:last-of-type {
+    -ms-grid-column-align: start;
+        justify-self: start;
+  }
+}
+/*# sourceMappingURL=game.css.map */

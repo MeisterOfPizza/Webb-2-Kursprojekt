@@ -126,7 +126,7 @@ function init() {
     scene.add(directionalLight);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
     scoreText = $("#score-text").first();
