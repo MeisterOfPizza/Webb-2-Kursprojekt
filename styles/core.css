@@ -1,0 +1,16 @@
+@font-face {
+  font-family: "turret-road";
+  src: url("../fonts/Turret_Road/TurretRoad-Regular.ttf");
+}
+
+.custom-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+html {
+  cursor: none;
+}
+/*# sourceMappingURL=core.css.map */

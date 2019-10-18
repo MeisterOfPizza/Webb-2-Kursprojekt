@@ -11,11 +11,11 @@ function degToRad(degrees)
 }
 
 $(document).ready(function() {
-    init();
+    //init();
 });
 
 $(window).resize(function() {
-    onWindowResize();
+    //onWindowResize();
 });
 
 function loadingDone() {
@@ -37,23 +37,11 @@ function init() {
     directionalLight.lookAt(0, 0, 0);
     scene.add(directionalLight);
 
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
-    {
-        const loader = new THREE.CubeTextureLoader();
-        const texture = loader.load([
-            'images/skyboxes/space-skybox-2-pos-x.jpg',
-            'images/skyboxes/space-skybox-2-neg-x.jpg',
-            'images/skyboxes/space-skybox-2-pos-y.jpg',
-            'images/skyboxes/space-skybox-2-neg-y.jpg',
-            'images/skyboxes/space-skybox-2-pos-z.jpg',
-            'images/skyboxes/space-skybox-2-neg-z.jpg',
-        ]);
-        //scene.background = texture;
-        scene.background = new THREE.Color(0x080808);
-    }
+    renderer.setClearColor(0x000000, 0);
 
     {
         var loader = new THREE.GLTFLoader();
