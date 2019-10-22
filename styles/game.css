@@ -3,6 +3,44 @@
   src: url("../fonts/Turret_Road/TurretRoad-Regular.ttf");
 }
 
+@font-face {
+  src: url("../fonts/Questrial/Questrial-Regular.ttf");
+  font-family: "questrial";
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.custom-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+html {
+  cursor: none;
+}
+
 .shine-effect {
   background-repeat: no-repeat;
   background-position: -120px -120px, 0 0;

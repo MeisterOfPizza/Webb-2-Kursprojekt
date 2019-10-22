@@ -46,6 +46,17 @@ $(document).ready(function() {
             height: svgDiameter * 1.5 + "px"
         }
     });
+
+    /*
+    holdProgressBar._progressPath._tweenable.onComplete(function() {
+        alert("test")
+    });
+    */
+    holdProgressBar.animate(0);
+    holdProgressBar._progressPath._tweenable.onComplete = function() {
+        alert("done");
+    };
+    //holdProgressBar._progressPath._tweenable.onComplete();
     
     $(window).mousemove(function (event) {
         cursorStyling.left = event.pageX;
@@ -56,6 +67,12 @@ $(document).ready(function() {
 
     $(window).mousedown(function () {
         holdProgressBar.animate(1);
+
+        /*
+        holdProgressBar._progressPath._tweenable.finish(function() {
+            alert("test")
+        });
+        */
     });
 
     $(window).mouseup(function() {

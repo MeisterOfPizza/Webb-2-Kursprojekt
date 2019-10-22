@@ -5,17 +5,27 @@ let ship;
 let isLoading   = true;
 let isAnimating = true;
 
+let time          = 0;
+let deltaTime     = 0;
+let lastTimestamp = Date.now();
+
 function degToRad(degrees)
 {
     return degrees * (Math.PI / 180);
 }
 
+// Ping pongs value between -length and length.
+function pingPong(time, length, speed = 1) {
+    return Math.sin(time * speed) * length;
+}
+
 $(document).ready(function() {
-    //init();
+    init();
+    onWindowResize();
 });
 
 $(window).resize(function() {
-    //onWindowResize();
+    onWindowResize();
 });
 
 function loadingDone() {
@@ -72,9 +82,18 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
 
+    const timestamp = Date.now();
+    deltaTime = (timestamp - lastTimestamp) / 1000;
+    lastTimestamp = timestamp;
+    time += deltaTime;
+
+    ship.translateY(pingPong(time, 0.005, 3));
     renderer.render(scene, camera);
 }
 
 function onWindowResize() {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.zoom   = camera.aspect / 1.77 * 0.75;
+    camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth, container.clientHeight);
 }
