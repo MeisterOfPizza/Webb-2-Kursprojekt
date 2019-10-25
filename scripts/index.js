@@ -59,7 +59,7 @@ function init() {
             ship = glb.scene.children[0];
             
             ship.position.set(0, 0, 0);
-            ship.scale.set(1, 1, 1);
+            ship.scale.set(0.8, 0.8, 0.8);
             ship.rotateY(degToRad(180));
 
             scene.add(ship);
