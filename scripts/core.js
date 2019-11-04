@@ -11,6 +11,10 @@ let cursorStyling = {
 
 const holdTimeFinish = 0.25;
 
+var onCursorHoldFinish;
+var onCursorHoldEnd;
+var onMouseMove;
+
 $(document).ready(function() {
     let cursorRadius = 10;
     let svgDiameter = cursorRadius * 2;
@@ -47,7 +51,14 @@ $(document).ready(function() {
         },
         step: (state, bar) => {
             if (bar.value() === 1) {
-                console.log("done")
+                if (onCursorHoldFinish !== undefined) {
+                    onCursorHoldFinish();
+                }
+            }
+            else {
+                if (onCursorHoldEnd !== undefined) {
+                    onCursorHoldEnd();
+                }
             }
         }
     });
@@ -57,6 +68,10 @@ $(document).ready(function() {
         cursorStyling.top = event.pageY;
 
         cursor.css(cursorStyling);
+
+        if (onMouseMove !== undefined) {
+            onMouseMove(event);
+        }
     });
 
     $(window).mousedown(function () {

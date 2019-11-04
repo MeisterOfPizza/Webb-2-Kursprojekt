@@ -9,6 +9,8 @@ let time          = 0;
 let deltaTime     = 0;
 let lastTimestamp = Date.now();
 
+let followCursor = false;
+
 function degToRad(degrees)
 {
     return degrees * (Math.PI / 180);
@@ -30,6 +32,24 @@ $(window).resize(function() {
 
 function loadingDone() {
     animate();
+
+    onCursorHoldFinish = function() {
+        followCursor = true;
+    }
+
+    onCursorHoldEnd = function() {
+        followCursor = false;
+    }
+
+    onMouseMove = function(event) {
+        if (followCursor) {
+            var vector = new THREE.Vector3(event.pageX, event.pageY, 0.5);
+            vector.unproject(camera);
+            var dir = vector.sub(camera.position).normalize();
+            var distance = - camera.position.z / dir.z;
+            var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+        }
+    }
 }
 
 function init() {
