@@ -44,19 +44,13 @@ $(document).ready(function() {
             transform: "translate(-50%, -50%)",
             width: svgDiameter * 1.5 + "px",
             height: svgDiameter * 1.5 + "px"
+        },
+        step: (state, bar) => {
+            if (bar.value() === 1) {
+                console.log("done")
+            }
         }
     });
-
-    /*
-    holdProgressBar._progressPath._tweenable.onComplete(function() {
-        alert("test")
-    });
-    */
-    holdProgressBar.animate(0);
-    holdProgressBar._progressPath._tweenable.onComplete = function() {
-        //alert("done");
-    };
-    //holdProgressBar._progressPath._tweenable.onComplete();
     
     $(window).mousemove(function (event) {
         cursorStyling.left = event.pageX;
@@ -67,12 +61,6 @@ $(document).ready(function() {
 
     $(window).mousedown(function () {
         holdProgressBar.animate(1);
-
-        /*
-        holdProgressBar._progressPath._tweenable.finish(function() {
-            alert("test")
-        });
-        */
     });
 
     $(window).mouseup(function() {

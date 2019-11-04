@@ -1,6 +1,6 @@
 // Essentials
 let camera, scene, renderer, container, directionalLight;
-let ship;
+let model;
 
 let isLoading   = true;
 let isAnimating = true;
@@ -37,13 +37,13 @@ function init() {
 
     canvas = $("#banner-canvas")[0];
     camera = new THREE.PerspectiveCamera(70, container.clientWidth / container.clientHeight, 0.01, 100);
-    camera.position.set(5, 3, -2);
+    camera.position.set(0, 0, 15);
     camera.lookAt(0, 0, 0);
 
     scene = new THREE.Scene();
 
-    directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 5, 5);
+    directionalLight = new THREE.DirectionalLight(0xffffff, 8);
+    directionalLight.position.set(0, 0, 5);
     directionalLight.lookAt(0, 0, 0);
     scene.add(directionalLight);
 
@@ -55,26 +55,16 @@ function init() {
 
     {
         var loader = new THREE.GLTFLoader();
-        loader.load("../meshes/player_ship.glb", function (glb) {
-            ship = glb.scene.children[0];
+        loader.load("../meshes/barren_1.glb", function (glb) {
+            model = glb.scene.children[0];
             
-            ship.position.set(0, 0, 0);
-            ship.scale.set(0.8, 0.8, 0.8);
-            ship.rotateY(degToRad(180));
+            model.position.set(0, 0, 0);
 
-            scene.add(ship);
+            scene.add(model);
 
             loadingDone();
         }, undefined, function (error) {
         	console.error(error);
-
-            let geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-            let material = new THREE.MeshNormalMaterial();
-        
-            ship = new THREE.Mesh(geometry, material);
-            scene.add(ship);
-
-            loadingDone();
         });
     }
 }
@@ -87,7 +77,8 @@ function animate() {
     lastTimestamp = timestamp;
     time += deltaTime;
 
-    ship.translateY(pingPong(time, 0.005, 3));
+    //model.translateY(pingPong(time, 0.005, 3));
+    model.rotateOnAxis(new THREE.Vector3(1, 1, -1), degToRad(0.025));
     renderer.render(scene, camera);
 }
 
