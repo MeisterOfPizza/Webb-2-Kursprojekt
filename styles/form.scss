@@ -1,0 +1,29 @@
+@import "core";
+
+body {
+    margin: 0;
+    color: white;
+    font-family: questrial;
+    background-color: color(primary-bg-dark);
+
+    div.background {
+        background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
+                    radial-gradient(ellipse at left, color(gradient-blue), transparent);
+        width: 100vw;
+        height: 100vh;
+        filter: saturate(0.9);
+    }
+
+    form {
+        position: absolute;
+
+        fieldset {
+            position: relative;
+            width: 500px;
+            height: 350px;
+            padding: 25px;
+            background-color: white;
+            border-radius: 50px;
+        }
+    }
+}

@@ -28,8 +28,8 @@ body {
     background-color: color(primary-bg-dark);
 
     div.background {
-        background: radial-gradient(ellipse at right, rgba(214, 48, 255, 0.25), transparent),
-                    radial-gradient(ellipse at left, rgba(0, 60, 151, 0.25), transparent);
+        background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
+                    radial-gradient(ellipse at left, color(gradient-blue), transparent);
         width: 100vw;
         height: 100vh;
         filter: saturate(0.9);

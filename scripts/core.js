@@ -11,6 +11,8 @@ let cursorStyling = {
 
 const holdTimeFinish = 0.25;
 
+var lastCursorPoint = { x: 0, y: 0 };
+
 var onCursorHoldFinish;
 var onCursorHoldEnd;
 var onMouseMove;
@@ -70,8 +72,10 @@ $(document).ready(function() {
         cursor.css(cursorStyling);
 
         if (onMouseMove !== undefined) {
-            onMouseMove(event);
+            onMouseMove(event, { x: event.pageX - lastCursorPoint.x, y: event.pageY - lastCursorPoint.y });
         }
+
+        lastCursorPoint = { x: event.pageX, y: event.pageY }
     });
 
     $(window).mousedown(function () {

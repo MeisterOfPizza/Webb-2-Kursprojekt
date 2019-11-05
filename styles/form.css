@@ -141,4 +141,32 @@ html {
     width: 69px;
   }
 }
-/*# sourceMappingURL=core.css.map */
+
+body {
+  margin: 0;
+  color: white;
+  font-family: questrial;
+  background-color: #070707;
+}
+
+body div.background {
+  background: radial-gradient(ellipse at right, rgba(214, 48, 255, 0.25), transparent), radial-gradient(ellipse at left, rgba(0, 60, 151, 0.25), transparent);
+  width: 100vw;
+  height: 100vh;
+  -webkit-filter: saturate(0.9);
+          filter: saturate(0.9);
+}
+
+body form {
+  position: absolute;
+}
+
+body form fieldset {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  padding: 25px;
+  background-color: white;
+  border-radius: 50px;
+}
+/*# sourceMappingURL=form.css.map */

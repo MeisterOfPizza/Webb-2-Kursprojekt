@@ -10,7 +10,9 @@
 
 $colors: (
     primary-bg-dark: #070707,
-    primary-text: white
+    primary-text: white,
+    gradient-blue: rgba(0, 60, 151, 0.25),
+    gradient-purple: rgba(214, 48, 255, 0.25)
 );
 
 @function color($color-name) {
@@ -134,7 +136,7 @@ html {
             }
             li:nth-child(3):hover ~ .underbar {
                 left: 221px;
-                width: 59px;
+                width: 57px;
             }
             li:nth-child(4):hover ~ .underbar {
                 left: 305px;

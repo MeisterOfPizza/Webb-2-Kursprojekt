@@ -130,7 +130,7 @@ html {
   }
   #page-top-header ul li:nth-child(3):hover ~ .underbar {
     left: 221px;
-    width: 59px;
+    width: 57px;
   }
   #page-top-header ul li:nth-child(4):hover ~ .underbar {
     left: 305px;

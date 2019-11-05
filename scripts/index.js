@@ -40,16 +40,6 @@ function loadingDone() {
     onCursorHoldEnd = function() {
         followCursor = false;
     }
-
-    onMouseMove = function(event) {
-        if (followCursor) {
-            var vector = new THREE.Vector3(event.pageX, event.pageY, 0.5);
-            vector.unproject(camera);
-            var dir = vector.sub(camera.position).normalize();
-            var distance = - camera.position.z / dir.z;
-            var pos = camera.position.clone().add(dir.multiplyScalar(distance));
-        }
-    }
 }
 
 function init() {
@@ -96,10 +86,17 @@ function animate() {
     deltaTime = (timestamp - lastTimestamp) / 1000;
     lastTimestamp = timestamp;
     time += deltaTime;
-
-    //model.translateY(pingPong(time, 0.005, 3));
-    model.rotateOnAxis(new THREE.Vector3(1, 1, -1), degToRad(0.025));
+    
     renderer.render(scene, camera);
+
+    if (followCursor) {
+        let screenMiddle = new THREE.Vector3(container.clientWidth / 2, container.clientHeight / 2, 0);
+        let cursorPoint  = new THREE.Vector3(lastCursorPoint.x, lastCursorPoint.y, 0);
+        let delta        = cursorPoint.sub(screenMiddle).length();
+        let direction    = cursorPoint.normalize();        
+        
+        model.rotateOnAxis(new THREE.Vector3(direction.y, direction.x, 0), degToRad(0.005 * delta));
+    }
 }
 
 function onWindowResize() {
