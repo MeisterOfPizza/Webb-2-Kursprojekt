@@ -52,6 +52,11 @@ $desktop: 1400px;
     left: 0%;
     user-select: none;
     pointer-events: none;
+    display: none;
+
+    @include desktop {
+        display: block;
+    }
 
     #custom-cursor {
         position: absolute;
@@ -59,6 +64,7 @@ $desktop: 1400px;
         left: 0;
         display: none;
         user-select: none;
+    display: none;
 
         svg {
             transform: translate(-50%, -50%);
@@ -66,8 +72,14 @@ $desktop: 1400px;
     }
 }
 
-html {
-    cursor: none;
+div.background-gradient {
+    position: fixed;
+    background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
+                radial-gradient(ellipse at left, color(gradient-blue), transparent);
+    width: 100vw;
+    height: 100vh;
+    filter: saturate(0.9);
+    z-index: -25;
 }
 
 #page-top-header {
@@ -77,6 +89,7 @@ html {
     right: 25px;
     text-align: right;
     font-size: 20px;
+    z-index: 100;
 
     @include desktop {
         width: 100%;
@@ -98,8 +111,11 @@ html {
             a {
                 text-decoration: none;
                 color: white;
-                cursor: none;
                 user-select: none;
+                
+                @include desktop {
+                    cursor: none;
+                }
             }
         }
 

@@ -95,7 +95,7 @@ function animate() {
         let delta        = cursorPoint.sub(screenMiddle).length();
         let direction    = cursorPoint.normalize();        
         
-        model.rotateOnAxis(new THREE.Vector3(direction.y, direction.x, 0), degToRad(0.005 * delta));
+        model.rotateOnWorldAxis(new THREE.Vector3(direction.y, direction.x, 0), degToRad(0.005 * delta));
     }
 }
 

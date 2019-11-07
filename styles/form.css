@@ -38,6 +38,13 @@
       -ms-user-select: none;
           user-select: none;
   pointer-events: none;
+  display: none;
+}
+
+@media (min-width: 1400px) {
+  #custom-cursor-container {
+    display: block;
+  }
 }
 
 #custom-cursor-container #custom-cursor {
@@ -49,6 +56,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  display: none;
 }
 
 #custom-cursor-container #custom-cursor svg {
@@ -56,8 +64,14 @@
           transform: translate(-50%, -50%);
 }
 
-html {
-  cursor: none;
+div.background-gradient {
+  position: fixed;
+  background: radial-gradient(ellipse at right, rgba(214, 48, 255, 0.25), transparent), radial-gradient(ellipse at left, rgba(0, 60, 151, 0.25), transparent);
+  width: 100vw;
+  height: 100vh;
+  -webkit-filter: saturate(0.9);
+          filter: saturate(0.9);
+  z-index: -25;
 }
 
 #page-top-header {
@@ -67,6 +81,7 @@ html {
   right: 25px;
   text-align: right;
   font-size: 20px;
+  z-index: 100;
 }
 
 @media (min-width: 1400px) {
@@ -93,11 +108,16 @@ html {
 #page-top-header ul li a {
   text-decoration: none;
   color: white;
-  cursor: none;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+@media (min-width: 1400px) {
+  #page-top-header ul li a {
+    cursor: none;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -142,6 +162,10 @@ html {
   }
 }
 
+a {
+  cursor: pointer !important;
+}
+
 body {
   margin: 0;
   color: white;
@@ -149,24 +173,67 @@ body {
   background-color: #070707;
 }
 
-body div.background {
-  background: radial-gradient(ellipse at right, rgba(214, 48, 255, 0.25), transparent), radial-gradient(ellipse at left, rgba(0, 60, 151, 0.25), transparent);
-  width: 100vw;
-  height: 100vh;
-  -webkit-filter: saturate(0.9);
-          filter: saturate(0.9);
+body div.form-container {
+  width: 100%;
+  overflow-x: hidden;
 }
 
-body form {
-  position: absolute;
-}
-
-body form fieldset {
-  position: relative;
-  width: 500px;
-  height: 350px;
-  padding: 25px;
+body div.form-container form {
+  margin: 200px 50px;
+  padding: 25px 25px;
   background-color: white;
   border-radius: 50px;
+  border-color: transparent;
+  -webkit-box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 1400px) {
+  body div.form-container form {
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+body div.form-container form fieldset {
+  border: 0;
+}
+
+body div.form-container form fieldset legend {
+  color: black;
+  font-size: 1.75em;
+}
+
+body div.form-container form fieldset label {
+  color: black;
+  font-size: 1.1em;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+body div.form-container form fieldset textarea {
+  width: 100%;
+  resize: none;
+  font-family: questrial;
+  font-size: 0.9em;
+}
+
+body div.form-container form fieldset hr {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: black;
+  border-width: 0;
+  height: 1px;
+}
+
+body div.form-container form fieldset input[type=submit] {
+  font-size: 1.1em;
+  background-color: black;
+  border-radius: 50px;
+  border: none;
+  padding: 5px 50px;
+  color: white;
 }
 /*# sourceMappingURL=form.css.map */

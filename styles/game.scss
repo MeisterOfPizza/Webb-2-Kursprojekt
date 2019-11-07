@@ -1,5 +1,14 @@
 @import "core";
 
+html {
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    font-family: turret-road, Arial, Helvetica, sans-serif;
+}
+
 .shine-effect {
     background-repeat: no-repeat;
     background-position: -120px -120px, 0 0;
@@ -20,11 +29,6 @@
     background-position: 0 0, 0 0;
     
     transition-duration: 0.5s;
-}
-
-body {
-    margin: 0;
-    font-family: turret-road, Arial, Helvetica, sans-serif;
 }
 
 div.game-scene {

@@ -1,29 +1,73 @@
 @import "core";
 
+a {
+    cursor: pointer !important;
+}
+
 body {
     margin: 0;
     color: white;
     font-family: questrial;
     background-color: color(primary-bg-dark);
 
-    div.background {
-        background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
-                    radial-gradient(ellipse at left, color(gradient-blue), transparent);
-        width: 100vw;
-        height: 100vh;
-        filter: saturate(0.9);
-    }
+    div.form-container {
+        width: 100%;
+        overflow-x: hidden;
 
-    form {
-        position: absolute;
-
-        fieldset {
-            position: relative;
-            width: 500px;
-            height: 350px;
-            padding: 25px;
+        form {
+            margin: 200px 50px;
+            padding: 25px 25px;
             background-color: white;
             border-radius: 50px;
+            border-color: transparent;
+            box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
+
+            @include desktop {
+                width: 750px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            fieldset {
+                border: 0;
+
+                legend {
+                    color: black;
+                    font-size: 1.75em;
+                }
+
+                label {
+                    color: black;
+                    font-size: 1.1em;
+                    display: block;
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                }
+
+                textarea {
+                    width: 100%;
+                    resize: none;
+                    font-family: questrial;
+                    font-size: 0.9em;
+                }
+
+                hr {
+                    margin-top: 25px;
+                    margin-bottom: 25px;
+                    background-color: black;
+                    border-width: 0;
+                    height: 1px;
+                }
+
+                input[type=submit] {
+                    font-size: 1.1em;
+                    background-color: black;
+                    border-radius: 50px;
+                    border: none;
+                    padding: 5px 50px;
+                    color: white;
+                }
+            }
         }
     }
 }

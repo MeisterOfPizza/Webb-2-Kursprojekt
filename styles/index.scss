@@ -1,7 +1,9 @@
 @import "core";
 
 html {
-    @extend html;
+    @include desktop {
+        cursor: none;
+    }
 }
 
 #custom-cursor-container {
@@ -28,11 +30,8 @@ body {
     background-color: color(primary-bg-dark);
 
     div.background {
-        background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
-                    radial-gradient(ellipse at left, color(gradient-blue), transparent);
         width: 100vw;
         height: 100vh;
-        filter: saturate(0.9);
 
         .home-banner-container {
             width: 100%;

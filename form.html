@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles/form.css"></link>
 </head>
 <body>
-    <div class="background"></div>
+    <div class="background-gradient"></div>
     <header id="page-top-header">
         <nav>
             <ul>
@@ -22,13 +22,25 @@
         </nav>
     </header>
 
-    <form>
-        <fieldset>
-        </fieldset>
-    </form>
+    <div class="form-container">
+        <form onsubmit="return send(this);">
+            <fieldset>
+                <legend>Some questions for you!</legend>
+                <label>What is your opinion of the game?</label>
+                <textarea rows="5" cols="50" name="opinion" required placeholder="Opinion, thoughts etc."></textarea>
+                <hr>
+                <label>What is your best highscore?</label>
+                <input type="number" value="0" min="0" required name="highscore" placeholder="100">
+                <hr>
+                <label>What would you like to see improved?</label>
+                <textarea rows="3" cols="50" name="improvements" required placeholder="Give examples, minimum of 25 characters"></textarea>
+                <hr>
+                <input type="submit" value="Send" onsubmit="send(this.form)">
+            </fieldset>
+        </form>
+    </div>
 
     <script src="scripts/jquery-3.4.1.min.js"></script>
-    <script src="scripts/core.js"></script>
-    <script src="scripts/progressbar.min.js"></script>
+    <script src="scripts/form.js"></script>
 </body>
 </html>
