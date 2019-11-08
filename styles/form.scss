@@ -1,7 +1,14 @@
 @import "core";
 
-a {
-    cursor: pointer !important;
+.fixed-background {
+    background: url("../images/lp-space-2.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -25;
+    position: fixed;
 }
 
 body {
@@ -10,34 +17,24 @@ body {
     font-family: questrial;
     background-color: color(primary-bg-dark);
 
-    div.form-container {
+    section.form-container {
         width: 100%;
-        overflow-x: hidden;
 
         form {
-            margin: 200px 50px;
+            width: 100%;
             padding: 25px 25px;
-            background-color: white;
-            border-radius: 50px;
-            border-color: transparent;
-            box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.5);
-
-            @include desktop {
-                width: 750px;
-                margin-left: auto;
-                margin-right: auto;
-            }
+            box-sizing: border-box;
 
             fieldset {
                 border: 0;
 
                 legend {
-                    color: black;
+                    color: white;
                     font-size: 1.75em;
                 }
 
                 label {
-                    color: black;
+                    color: white;
                     font-size: 1.1em;
                     display: block;
                     margin-top: 15px;
@@ -54,18 +51,18 @@ body {
                 hr {
                     margin-top: 25px;
                     margin-bottom: 25px;
-                    background-color: black;
+                    background-color: white;
                     border-width: 0;
                     height: 1px;
                 }
 
                 input[type=submit] {
                     font-size: 1.1em;
-                    background-color: black;
+                    background-color: white;
                     border-radius: 50px;
                     border: none;
                     padding: 5px 50px;
-                    color: white;
+                    color: black;
                 }
             }
         }

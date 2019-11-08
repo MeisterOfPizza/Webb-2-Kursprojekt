@@ -1,0 +1,32 @@
+@import "core";
+
+.fixed-background {
+    background: url("../images/lp-space-1.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: -25;
+    position: fixed;
+}
+
+body {
+    margin: 0;
+    color: white;
+    font-family: questrial;
+    background-color: color(primary-bg-dark);
+
+    section.redovisning-container {
+        padding: 25px 25px;
+
+        p {
+            color: white;
+            font-size: 1.1em;
+        }
+
+        a {
+            color: orangered;
+        }
+    }
+}

@@ -5,42 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form</title>
-    <link rel="stylesheet" type="text/css" href="styles/form.css"></link>
+    <link rel="stylesheet" type="text/css" href="styles/form.css">
 </head>
 <body>
-    <div class="background-gradient"></div>
-    <header id="page-top-header">
+    <div class="fixed-background"></div>
+    <div class="logo-container">
+        <img alt="logo" class="logo" src="images/lion-logo.png" />
+        <h3 class="logo-title">Name</h3>
+        <h4 class="logo-creator">Emil Engelin</h4>
+    </div>
+    <header id="page-top-header" class="hide">
         <nav>
             <ul>
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="game.html">GAME</a></li>
-                <li><a href="form.html">FORM</a></li>
-                <li><a href="game.html">CONTACT</a></li>
-                <li><a href="game.html">ABOUT</a></li>
-                <div class="underbar"></div>
+                <li class="selected"><a href="form.html">FORM</a></li>
+                <li><a href="redovisning.html">REDOVISNING</a></li>
+                <li class="underbar"></li>
             </ul>
         </nav>
+        <div id="menu-button">&#x2630;</div>
     </header>
 
-    <div class="form-container">
-        <form onsubmit="return send(this);">
-            <fieldset>
-                <legend>Some questions for you!</legend>
-                <label>What is your opinion of the game?</label>
-                <textarea rows="5" cols="50" name="opinion" required placeholder="Opinion, thoughts etc."></textarea>
-                <hr>
-                <label>What is your best highscore?</label>
-                <input type="number" value="0" min="0" required name="highscore" placeholder="100">
-                <hr>
-                <label>What would you like to see improved?</label>
-                <textarea rows="3" cols="50" name="improvements" required placeholder="Give examples, minimum of 25 characters"></textarea>
-                <hr>
-                <input type="submit" value="Send" onsubmit="send(this.form)">
-            </fieldset>
-        </form>
+    <div class="parallax-block tall">
+        <h1 class="title">Ready to answer some questions?</h1>
+    </div>
+    <div class="parallax-block" style="background-color: black;">
+        <section class="form-container">
+            <form onsubmit="return send(this);">
+                <fieldset>
+                    <legend>Some questions for you!</legend>
+                    <label>What is your opinion of the game?</label>
+                    <textarea rows="5" cols="50" name="opinion" required placeholder="Opinion, thoughts etc."></textarea>
+                    <hr>
+                    <label>What is your best highscore?</label>
+                    <input type="number" value="0" min="0" required name="highscore" placeholder="100">
+                    <hr>
+                    <label>What would you like to see improved?</label>
+                    <textarea rows="3" cols="50" name="improvements" required placeholder="Give examples, minimum of 25 characters"></textarea>
+                    <hr>
+                    <input type="submit" value="Send" onsubmit="send(this.form)">
+                </fieldset>
+            </form>
+        </section>
+    </div>
+    <div class="parallax-block tall">
+        <h1 id="done" class="title">All done!</h1>
     </div>
 
     <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/core.js"></script>
     <script src="scripts/form.js"></script>
 </body>
 </html>

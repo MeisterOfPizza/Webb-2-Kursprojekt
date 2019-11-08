@@ -18,6 +18,20 @@ var onCursorHoldEnd;
 var onMouseMove;
 
 $(document).ready(function() {
+    $(window).scroll(function() {
+        if (window.scrollY === 0) {
+            $("#page-top-header").removeClass("background");
+        } else {
+            $("#page-top-header").addClass("background");
+        }
+    });
+
+    $("#menu-button").click(function() {
+        $("#page-top-header").toggleClass("hide");
+    });
+});
+
+function createCustomMouse() {
     let cursorRadius = 10;
     let svgDiameter = cursorRadius * 2;
     let customCursor = `
@@ -85,4 +99,4 @@ $(document).ready(function() {
     $(window).mouseup(function() {
         holdProgressBar.animate(0);
     });
-});
+}

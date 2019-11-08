@@ -1,8 +1,8 @@
 function send(form) {
     if (form["improvements"].value.length >= 25) {
-        alert("Sent!");
+        window.location.href = "#done";
 
-        form.clear();
+        form.reset();
     }
     else {
         alert("The improvements text needs to be at least 25 characters long.");

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="styles/index.css"></link>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
 </head>
 <body>
     <div class="background-gradient background">
@@ -14,29 +14,30 @@
             </div>
         </div>
         <div class="logo-container">
-            <img class="logo" src="images/lion-logo.png" />
+            <img alt="logo" class="logo" src="images/lion-logo.png" />
             <h3 class="logo-title">Name</h3>
             <h4 class="logo-creator">Emil Engelin</h4>
         </div>
     </div>
-    <header id="page-top-header">
+    <header id="page-top-header" class="hide">
         <nav>
             <ul>
-                <li><a href="index.html">HOME</a></li>
+                <li class="selected"><a href="index.html">HOME</a></li>
                 <li><a href="game.html">GAME</a></li>
                 <li><a href="form.html">FORM</a></li>
-                <li><a href="game.html">CONTACT</a></li>
-                <li><a href="game.html">ABOUT</a></li>
-                <div class="underbar"></div>
+                <li><a href="redovisning.html">REDOVISNING</a></li>
+                <li class="underbar"></li>
             </ul>
         </nav>
+        <div id="menu-button">&#x2630;</div>
     </header>
 
     <script src="scripts/jquery-3.4.1.min.js"></script>
     <script src="scripts/three.min.js"></script>
     <script src="scripts/GLTFLoader.js"></script>
-    <script src="scripts/core.js"></script>
-    <script src="scripts/index.js"></script>
     <script src="scripts/progressbar.min.js"></script>
+    <script src="scripts/core.js"></script>
+    <script>createCustomMouse();</script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
