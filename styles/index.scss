@@ -10,10 +10,6 @@ html {
     @extend #custom-cursor-container;
 }
 
-#page-top-header {
-    @extend #page-top-header;
-}
-
 @keyframes rotate {
     from {
         transform: rotate(0deg);
@@ -55,6 +51,12 @@ body {
                     position: absolute;
                 }
             }
+        }
+    }
+
+    @include desktop {
+        .logo-container {
+            top: 75px;
         }
     }
 }
@@ -99,6 +101,8 @@ div.background-gradient {
     }
 }
 
-a {
-    cursor: none;
+@include desktop {
+    a {
+        cursor: none;
+    }
 }

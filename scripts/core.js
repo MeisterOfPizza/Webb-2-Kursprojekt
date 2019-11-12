@@ -18,16 +18,11 @@ var onCursorHoldEnd;
 var onMouseMove;
 
 $(document).ready(function() {
-    $(window).scroll(function() {
-        if (window.scrollY === 0) {
-            $("#page-top-header").removeClass("background");
-        } else {
-            $("#page-top-header").addClass("background");
-        }
+    $("#open-menu-button").click(function() {
+        $("#page-top-header").removeClass("hide");
     });
-
-    $("#menu-button").click(function() {
-        $("#page-top-header").toggleClass("hide");
+    $("#close-menu-button").click(function() {
+        $("#page-top-header").addClass("hide");
     });
 });
 
