@@ -1,0 +1,154 @@
+@import "core";
+
+body {
+    margin: 0;
+    font-family: questrial;
+}
+
+.shine-effect {
+    background-repeat: no-repeat;
+    background-position: -120px -120px, 0 0;
+    
+    background-image:linear-gradient(
+        to top left,
+        rgba(255, 255, 255, 0.4) 0%,
+        rgba(255, 255, 255, 0.4) 37%,
+        rgba(255, 255, 255, 0.8) 45%,
+        rgba(255, 255, 255, 0.0) 50%
+    );
+    
+    background-size: 250% 250%, 100% 100%;
+    transition: background-position 0s ease;
+}
+
+.shine-effect:hover {
+    background-position: 0 0, 0 0;
+    
+    transition-duration: 0.5s;
+}
+
+div.game-scene {
+    width: 100vw;
+    height: 100vh;
+    z-index: -64;
+
+    div.controls-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1;
+        grid-template-areas:
+        "left-btn right-btn";
+    
+        div.lane-btn:first-of-type {
+            grid-area: left-btn;
+        }
+
+        div.lane-btn:last-of-type {
+            grid-area: right-btn;
+        }
+
+        div.lane-btn {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    div#game-ui-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        text-transform: uppercase;
+
+        h2 {
+            color: white;
+            font-size: 35px;
+        }
+
+        h3 {
+            color: white;
+            font-size: 25px;
+        }
+    }
+
+    h2.title {
+        font-size: 75px;
+        color: black;
+        text-shadow: 3px 3px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+        letter-spacing: 0.0625em;
+        text-transform: uppercase;
+        text-align: center;
+        grid-area: title;
+        align-self: end;
+    }
+
+    a.btn {
+        background-color: #bcecff;
+        border-radius: 25px;
+        display: inline-block;
+        font-size: 25px;
+        text-decoration: none;
+        color: black;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 10px 40px;
+        margin: 0 25px;
+        align-self: start;
+        position: relative;
+        pointer-events: all;
+    }
+
+    div#start-game-container {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+
+        a.btn {
+            justify-self: center;
+            align-self: center;
+        }
+    }
+
+    div#game-over-container {
+        @include tablet {
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 50% 50%;
+            grid-template-areas:
+            "title title"
+            "btn-left btn-right";
+        }
+
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 50% 75px auto;
+        grid-template-areas:
+        "title"
+        "btn-left"
+        "btn-right";
+
+        a:first-of-type {
+            grid-area: btn-left;
+
+            @include tablet {
+                justify-self: end;
+            }
+        }
+
+        a:last-of-type {
+            grid-area: btn-right;
+
+            @include tablet {
+                justify-self: start;
+            }
+        }
+    }
+}

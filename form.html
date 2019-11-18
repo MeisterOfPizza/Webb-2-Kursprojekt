@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="styles/form.css">
+</head>
+<body>
+    <header id="page-top-header">
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="game.html">GAME</a></li>
+                <li class="selected"><a href="form.html">FORM</a></li>
+                <li><a href="redovisning.html">REDOVISNING</a></li>
+                <li class="underbar"></li>
+            </ul>
+            <div id="close-menu-button">&#x26CC;</div>
+        </nav>
+        <div id="open-menu-button">&#x2630;</div>
+    </header>
+    <div id="content">
+        <div class="parallax-block">
+            <div class="parallax-block--bg-container">
+                <div class="parallax-block--bg" style="background-image: url('images/lp-bg-2.jpg');"></div>
+            </div>
+            <h1 class="title desktop-exclude">Ready to answer some questions?</h1>
+            <h1 class="title fracture-container desktop-include">
+            <span>R</span>
+            <span>e</span>
+            <span>a</span>
+            <span>d</span>
+            <span>y</span>
+            <span></span>
+            <span>t</span>
+            <span>o</span>
+            <span></span>
+            <span>a</span>
+            <span>n</span>
+            <span>s</span>
+            <span>w</span>
+            <span>e</span>
+            <span>r</span>
+            <span></span>
+            <span>s</span>
+            <span>o</span>
+            <span>m</span>
+            <span>e</span>
+            <span></span>
+            <span>q</span>
+            <span>u</span>
+            <span>e</span>
+            <span>s</span>
+            <span>t</span>
+            <span>i</span>
+            <span>o</span>
+            <span>n</span>
+            <span>s</span>
+            <span>?</span>
+            </h1>
+        </div>
+        <div class="parallax-divider" style="background-color: black;">
+            <section class="form-container">
+                <form onsubmit="return send(this);">
+                    <fieldset>
+                        <legend>Some questions for you!</legend>
+                        <label>What is your opinion of the game?</label>
+                        <textarea rows="5" cols="50" name="opinion" required placeholder="Opinion, thoughts etc."></textarea>
+                        <hr>
+                        <label>What is your best highscore?</label>
+                        <input type="number" value="0" min="0" required name="highscore" placeholder="100">
+                        <hr>
+                        <label>What would you like to see improved?</label>
+                        <textarea rows="3" cols="50" name="improvements" required placeholder="Give examples, minimum of 25 characters"></textarea>
+                        <hr>
+                        <input type="submit" value="Send" onsubmit="send(this.form)">
+                    </fieldset>
+                </form>
+            </section>
+        </div>
+        <div class="parallax-block">
+            <div class="parallax-block--bg-container">
+                <div class="parallax-block--bg" style="background-image: url('images/lp-bg-1.jpg');"></div>
+            </div>
+            <h1 class="title desktop-exclude">All done!</h1>
+            <h1 id="done" class="title fracture-container desktop-include">
+                <span>A</span>
+                <span>l</span>
+                <span>l</span>
+                <span></span>
+                <span>d</span>
+                <span>o</span>
+                <span>n</span>
+                <span>e</span>
+                <span>!</span>
+            </h1>
+        </div>
+    </div>
+
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/core.js"></script>
+    <script src="scripts/form.js"></script>
+</body>
+</html>

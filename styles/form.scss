@@ -1,0 +1,57 @@
+@import "core";
+
+body {
+    margin: 0;
+    color: white;
+
+    section.form-container {
+        width: 100%;
+
+        form {
+            width: 100%;
+            padding: 25px 25px;
+            box-sizing: border-box;
+
+            fieldset {
+                border: 0;
+
+                legend {
+                    color: white;
+                    font-size: 1.75em;
+                }
+
+                label {
+                    color: white;
+                    font-size: 1.1em;
+                    display: block;
+                    margin-top: 15px;
+                    margin-bottom: 10px;
+                }
+
+                textarea {
+                    width: 100%;
+                    resize: none;
+                    font-family: questrial;
+                    font-size: 0.9em;
+                }
+
+                hr {
+                    margin-top: 25px;
+                    margin-bottom: 25px;
+                    background-color: white;
+                    border-width: 0;
+                    height: 1px;
+                }
+
+                input[type=submit] {
+                    font-size: 1.1em;
+                    background-color: white;
+                    border-radius: 50px;
+                    border: none;
+                    padding: 5px 50px;
+                    color: black;
+                }
+            }
+        }
+    }
+}

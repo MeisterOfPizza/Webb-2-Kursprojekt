@@ -21,6 +21,7 @@ const dragTilt           = 5;
 
 let lastlaneObjectSpawnCooldown = 0;
 
+let isStarted  = false;
 let isGameOver = false;
 let gameOverContainer;
 
@@ -94,6 +95,16 @@ $(window).resize(function() {
     onWindowResize();
 });
 
+function start() {
+    isStarted = true;
+
+    $("#start-game-container").css("display", "none");
+
+    setInterval(function () {
+        update();
+    }, 1);
+}
+
 function retry() {
     isGameOver = false;
 
@@ -106,10 +117,6 @@ function loadingDone() {
     createAsteroidPool();
     createCoinPool();
     animate();
-
-    setInterval(function() {
-        update();
-    }, 1);
 }
 
 function init() {
@@ -126,7 +133,7 @@ function init() {
     scene.add(directionalLight);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
     scoreText = $("#score-text").first();
@@ -264,10 +271,12 @@ function update() {
 }
 
 function switchLane(right) {
-    if (!((laneIndex === 0 && !right) || (laneIndex === 2 && right))) {
-        laneIndex = Math.min(Math.max(laneIndex + (right ? 1 : -1), 0), 2);
+    if (isStarted) {
+        if (!((laneIndex === 0 && !right) || (laneIndex === 2 && right))) {
+            laneIndex = Math.min(Math.max(laneIndex + (right ? 1 : -1), 0), 2);
 
-        normalizedDragTilt += right ? -dragTilt : dragTilt;
+            normalizedDragTilt += right ? -dragTilt : dragTilt;
+        }
     }
 }
 

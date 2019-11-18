@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Redovisning</title>
+    <link rel="stylesheet" type="text/css" href="styles/redovisning.css">
+</head>
+<body>
+    <header id="page-top-header">
+        <div class="bg-blur"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="game.html">GAME</a></li>
+                <li><a href="form.html">FORM</a></li>
+                <li class="selected"><a href="redovisning.html">REDOVISNING</a></li>
+                <li class="underbar"></li>
+            </ul>
+            <div id="close-menu-button">&#x26CC;</div>
+        </nav>
+        <div id="open-menu-button">&#x2630;</div>
+    </header>
+    <div id="content">
+        <div class="parallax-block">
+            <div class="parallax-block--bg-container">
+                <div class="parallax-block--bg" style="background-image: url('images/lp-space-1.jpeg');"></div>
+            </div>
+        
+            <h1 class="title desktop-exclude">Redovisning av webbprojekt</h1>
+            <h1 class="title fracture-container desktop-include">
+                <span>R</span>
+                <span>e</span>
+                <span>d</span>
+                <span>o</span>
+                <span>v</span>
+                <span>i</span>
+                <span>s</span>
+                <span>n</span>
+                <span>i</span>
+                <span>n</span>
+                <span>g</span>
+                <span></span>
+                <span>a</span>
+                <span>v</span>
+                <span></span>
+                <span>w</span>
+                <span>e</span>
+                <span>b</span>
+                <span>b</span>
+                <span>p</span>
+                <span>r</span>
+                <span>o</span>
+                <span>j</span>
+                <span>e</span>
+                <span>k</span>
+                <span>t</span>
+            </h1>
+        </div>
+        <div class="parallax-divider" style="background-color: black;">
+            <section class="redovisning-container">
+                <p>Jag har tänkt mig att webbsidan ska ha 4 st sidor, där varje sida har en enhetlig design med likadana färger
+                    (svart, vitt, blått och magenta) sam samma layout (förutom spelet). Generella designen påminner väldigt
+                    mycket om en minimalistisk design med två starka färgglada färger som används mer för utseendet samt två
+                    motsatta färger (svart och vitt) som används för för text och knappar. Detta eftersom kontrasten mellan
+                    svart och vitt samt bakgrunden gör det enkelt för användaren att hitta de viktiga delarna på sidan (t.ex
+                    knappar).</p>
+                <p>De stora bilderna som förekommer sällan (såsom bakgrund, foton, skärmdumpar osv.) kommer att vara JPEG:s
+                    eftersom den sparar datan i ett ”lossy” (löst) format vilket ger en sämre upplösning i utbyte mot mindre
+                    filstorlekar. PNG:s kommer att användas för de mindre bilderna (t.ex loggor) eftersom de är det motsatta av
+                    JPEG:s vilket gör dem bra att använda när man ska ha högupplösta bilder. Eftersom PNG:s oftast är i mindre
+                    upplösning så är nedladdningshastigheten försumbar.</p>
+                <p>Jag ska testa sidan i Chrome och Firefox. Sidan kommer att använda två olika typsnitt, ett till spelet och
+                    ett till resten av sidan.</p>
+                <p>Kravspecifikationen har jag lyckats följt genom att ha en klar plan nedskriven som jag alltid kunde kolla på
+                    om jag glömde bort något.</p>
+                <p>Det enda som var utmanande var spelet då jag inte har implementerat ett spel i 3D på webben tidigare. Därav
+                    så har jag lärt mig mer om ramverket <a href="https://threejs.org/">Three.js</a> samt hur OpenGL fungerar på
+                    en browser. Resultatet är jag väldigt nöjd med, och det är något som jag även vill förbättra senare.</p>
+            </section>
+        </div>
+        <div class="parallax-block">
+            <div class="parallax-block--bg-container">
+                <div class="parallax-block--bg" style="background-image: url('images/lp-space-2.jpeg');"></div>
+            </div>
+            <h1 class="title desktop-exclude">Något mer?</h1>
+            <h1 class="title fracture-container desktop-include">
+                <span>N</span>
+                <span>å</span>
+                <span>g</span>
+                <span>o</span>
+                <span>t</span>
+                <span></span>
+                <span>m</span>
+                <span>e</span>
+                <span>r</span>
+                <span>?</span>
+            </h1>
+        </div>
+    </div>
+
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/core.js"></script>
+</body>
+</html>
