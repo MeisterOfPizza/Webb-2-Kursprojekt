@@ -44,8 +44,38 @@ $desktop: 1400px;
     }
 }
 
+@keyframes fracture-text {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: 0;
+        transform: none;
+    }
+    25% {
+        transform: matrix(1,0,0,1,-100,-100);
+        color: orangered;
+    }
+    100% {
+        opacity: 1;
+        color: inherit;
+    }
+}
+
 html {
     scroll-behavior: smooth;
+    font-family: questrial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+#content {
+    transition: filter 1.5s;
+
+    @include desktop {
+        filter: none !important;
+    }
 }
 
 .tall {
@@ -54,6 +84,22 @@ html {
 
 .wide {
     width: 100vw;
+}
+
+.desktop-exclude {
+    display: inherit;
+
+    @include desktop {
+        display: none;
+    }
+}
+
+.desktop-include {
+    display: none;
+
+    @include desktop {
+        display: inherit;
+    }
 }
 
 div.logo-container {
@@ -89,16 +135,59 @@ div.logo-container {
     }
 }
 
+.fracture-container {
+    span {
+        float: left;
+    }
+
+    span:empty {
+        width: 10px;
+        height: 1px;
+    }
+
+    span.fracture {
+        animation: fracture-text 1s ease;
+    }
+}
+
 div.parallax-block {
     width: 100%;
+    height: 100vh;
     display: flex;
+
+    div.parallax-block--bg-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -25;
+        overflow: hidden;
+
+        div.parallax-block--bg {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+
+            @include desktop {
+                transform: translateZ(-1px) scale(1.15);
+            }
+        }
+    }
 
     .title {
         text-align: center;
         align-self: center;
         justify-self: center;
         margin: auto;
+        padding: 0 25px;
+        user-select: none;
     }
+}
+
+div.parallax-divider {
+    width: 100%;
 }
 
 #page-top-header.show > nav {
@@ -132,6 +221,11 @@ div.parallax-block {
 
 #page-top-header {
     font-size: 20px;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 10;
 
     #open-menu-button {
         border-radius: 50px;
@@ -143,6 +237,7 @@ div.parallax-block {
         top: 25px;
         right: 25px;
         font-size: 30px;
+        pointer-events: all;
 
         @include desktop {
             display: none;
@@ -150,6 +245,7 @@ div.parallax-block {
     }
 
     nav {
+        width: 0;
         height: 100vh;
         position: fixed;
         right: 0;
@@ -158,7 +254,7 @@ div.parallax-block {
         background-color: white;
         transition: width 0.5s ease;
         padding-top: 25px;
-        width: 0;
+        pointer-events: all;
 
         @include desktop {
             width: 100%;

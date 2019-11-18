@@ -1,11 +1,5 @@
 @import "core";
 
-html {
-    @include desktop {
-        cursor: none;
-    }
-}
-
 #custom-cursor-container {
     @extend #custom-cursor-container;
 }
@@ -19,15 +13,36 @@ html {
     }
 }
 
+@keyframes fly-in {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+    to {
+        left: calc(100vw - 174px);
+        opacity: 1;
+    }
+}
+
 body {
     margin: 0;
     color: white;
-    font-family: questrial;
     background-color: color(primary-bg-dark);
 
     div.background {
         width: 100vw;
         height: 100vh;
+
+        .fly-in-text {
+            position: fixed;
+            color: white;
+            top: 50vh;
+            opacity: 0;
+            text-align: center;
+            display: inline;
+            animation: fly-in 2s cubic-bezier(0, 1, 1, 0) 0.5s;
+            user-select: none;
+        }
 
         .home-banner-container {
             width: 100%;
@@ -37,6 +52,7 @@ body {
             #banner-scene {
                 width: 100%;
                 height: 100%;
+                animation: fade-in 3s none;
 
                 svg {
                     width: 250px;
@@ -98,11 +114,5 @@ div.background-gradient {
         svg {
             transform: translate(-50%, -50%);
         }
-    }
-}
-
-@include desktop {
-    a {
-        cursor: none;
     }
 }

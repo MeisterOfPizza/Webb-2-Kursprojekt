@@ -1,6 +1,8 @@
 let cursor;
 let holdProgressBar;
 
+let cursorTargetPoint = { x: 0, y: 0 };
+
 let cursorStyling = {
     "left": 0,
     "top": 0,
@@ -17,13 +19,59 @@ var onCursorHoldFinish;
 var onCursorHoldEnd;
 var onMouseMove;
 
+function lerp(start, end, t) {
+    return (1 - t) * start + t * end;
+}
+
 $(document).ready(function() {
     $("#open-menu-button").click(function() {
         $("#page-top-header").addClass("show");
+        $("#content").css("filter", "blur(5px)");
+
     });
     $("#close-menu-button").click(function() {
         $("#page-top-header").removeClass("show");
+        $("#content").css("filter", "none");
     });
+
+    $(document).mousemove(function (event) {
+        if (onMouseMove !== undefined) {
+            onMouseMove(event, { x: event.pageX - lastCursorPoint.x, y: event.pageY - lastCursorPoint.y });
+        }
+
+        lastCursorPoint = { x: event.pageX, y: event.pageY }
+    });
+
+    $(document).mousemove(function (event) {
+        lastMousePoint = { x: event.pageX, y: event.pageY };
+    });
+
+    $(".fracture-container").each(function () {
+        $(this).mouseenter(function (e) {
+            let children = $(this).children();
+
+            if (!children.last().hasClass("fracture")) {
+                children.each(function (index) {
+                    let child = $(this);
+
+                    setTimeout(function () {
+                        child.addClass("fracture");
+
+                        setTimeout(function () {
+                            child.removeClass("fracture");
+                        }, 1100);
+                    }, index * 15);
+                });
+            }
+        });
+
+        let container = $(this);
+        setTimeout(function() {
+            container.mouseenter();
+        }, 100);
+    });
+
+    updateCursor();
 });
 
 function createCustomMouse() {
@@ -74,17 +122,9 @@ function createCustomMouse() {
         }
     });
     
-    $(window).mousemove(function (event) {
-        cursorStyling.left = event.pageX;
-        cursorStyling.top = event.pageY;
-
-        cursor.css(cursorStyling);
-
-        if (onMouseMove !== undefined) {
-            onMouseMove(event, { x: event.pageX - lastCursorPoint.x, y: event.pageY - lastCursorPoint.y });
-        }
-
-        lastCursorPoint = { x: event.pageX, y: event.pageY }
+    $(document).mousemove(function (event) {
+        cursorTargetPoint.x = event.pageX;
+        cursorTargetPoint.y = event.pageY;
     });
 
     $(window).mousedown(function () {
@@ -94,4 +134,15 @@ function createCustomMouse() {
     $(window).mouseup(function() {
         holdProgressBar.animate(0);
     });
+}
+
+function updateCursor() {
+    requestAnimationFrame(updateCursor);
+
+    cursorStyling.left = lerp(cursorStyling.left, cursorTargetPoint.x, 0.05);
+    cursorStyling.top  = lerp(cursorStyling.top, cursorTargetPoint.y, 0.05);
+
+    if (cursor !== undefined) {
+        cursor.css(cursorStyling);
+    }
 }

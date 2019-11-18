@@ -2,14 +2,13 @@
 let camera, scene, renderer, container, directionalLight;
 let model;
 
-let isLoading   = true;
-let isAnimating = true;
-
-let time          = 0;
-let deltaTime     = 0;
-let lastTimestamp = Date.now();
-
 let followCursor = false;
+
+let currentSpinSpeed  = 0;
+let lastSpinDirection = new THREE.Vector3();
+let lastSpinDelta     = 0;
+
+const spinSpeed = 0.005;
 
 function degToRad(degrees)
 {
@@ -19,6 +18,10 @@ function degToRad(degrees)
 // Ping pongs value between -length and length.
 function pingPong(time, length, speed = 1) {
     return Math.sin(time * speed) * length;
+}
+
+function lerp(start, end, t) {
+    return (1 - t) * start + t * end;
 }
 
 $(document).ready(function() {
@@ -81,11 +84,6 @@ function init() {
 
 function animate() {
     requestAnimationFrame(animate);
-
-    const timestamp = Date.now();
-    deltaTime = (timestamp - lastTimestamp) / 1000;
-    lastTimestamp = timestamp;
-    time += deltaTime;
     
     renderer.render(scene, camera);
 
@@ -95,7 +93,17 @@ function animate() {
         let delta        = cursorPoint.sub(screenMiddle).length();
         let direction    = cursorPoint.normalize();        
         
-        model.rotateOnWorldAxis(new THREE.Vector3(direction.y, direction.x, 0), degToRad(0.005 * delta));
+        currentSpinSpeed = lerp(currentSpinSpeed, 3, spinSpeed);
+
+        lastSpinDirection = direction;
+        lastSpinDelta     = delta;
+
+        model.rotateOnWorldAxis(new THREE.Vector3(lastSpinDirection.y, lastSpinDirection.x, 0), degToRad(spinSpeed * lastSpinDelta) * currentSpinSpeed);
+    }
+    else {
+        currentSpinSpeed = lerp(currentSpinSpeed, 0, spinSpeed);
+
+        model.rotateOnWorldAxis(new THREE.Vector3(lastSpinDirection.y, lastSpinDirection.x, 0), degToRad(spinSpeed * lastSpinDelta) * currentSpinSpeed);
     }
 }
 

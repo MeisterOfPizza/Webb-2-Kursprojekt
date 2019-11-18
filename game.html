@@ -18,10 +18,13 @@
                 <div class="lane-btn" onclick="switchLane(false)"></div>
                 <div class="lane-btn" onclick="switchLane(true)"></div>
             </div>
+            <div id="start-game-container">
+                <a class="btn shine-effect" onclick="start()">Start</a>
+            </div>
             <div id="game-over-container" style="display:none">
-                <h2>Game over!</h2>
-                <a class="shine-effect" onclick="retry()">Retry</a>
-                <a class="shine-effect" href="index.html">Home</a>
+                <h2 class="title">Game over!</h2>
+                <a class="btn shine-effect" onclick="retry()">Retry</a>
+                <a class="btn shine-effect" href="index.html">Home</a>
             </div>
         </div>
     </div>
