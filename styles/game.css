@@ -48,6 +48,8 @@ div.logo-container {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 div.logo-container img.logo {
@@ -92,9 +94,15 @@ div.parallax-block .title {
   margin: auto;
 }
 
+#page-top-header.hide {
+  padding-top: 0;
+  width: 0px;
+}
+
 @media (min-width: 1400px) {
   #page-top-header.hide {
-    right: 0;
+    width: 100vw;
+    padding-top: 15px;
   }
 }
 
@@ -102,20 +110,38 @@ div.parallax-block .title {
   right: -250px;
 }
 
-#page-top-header.hide #menu-button {
-  top: -125px;
+#page-top-header.hide #open-menu-button {
+  display: block;
+}
+
+@media (min-width: 1400px) {
+  #page-top-header.hide #open-menu-button {
+    display: none;
+  }
+}
+
+#page-top-header.hide #close-menu-button {
+  display: none;
 }
 
 #page-top-header {
-  width: 100px;
+  height: 100vh;
   position: fixed;
-  top: 25px;
-  right: 25px;
+  right: 0;
   text-align: right;
   font-size: 20px;
   z-index: 100;
   background-color: white;
-  border-bottom: orangered solid 2px;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  padding-top: 25px;
+  width: 100vw;
+}
+
+@media (min-width: 768px) {
+  #page-top-header {
+    width: 250px;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -123,32 +149,54 @@ div.parallax-block .title {
     width: 100%;
     height: 35px;
     text-align: center;
-    top: 0;
-    right: 0;
     padding-top: 15px;
+    border-bottom: orangered solid 2px;
+    -webkit-transition: none;
+    transition: none;
   }
 }
 
-#page-top-header #menu-button {
+#page-top-header #close-menu-button {
   border-radius: 50px;
   background-color: black;
   width: 30px;
   height: 30px;
-  display: inline-block;
   text-align: center;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  position: relative;
-  -webkit-transition: 0.25s ease-in-out;
-  transition: 0.25s ease-in-out;
-  top: 0;
+  position: absolute;
+  top: 25px;
+  left: 25px;
 }
 
 @media (min-width: 1400px) {
-  #page-top-header #menu-button {
+  #page-top-header #close-menu-button {
+    display: none;
+  }
+}
+
+#page-top-header #open-menu-button {
+  border-radius: 50px;
+  background-color: black;
+  width: 30px;
+  height: 30px;
+  display: none;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+@media (min-width: 1400px) {
+  #page-top-header #open-menu-button {
     display: none;
   }
 }
@@ -220,25 +268,6 @@ div.parallax-block .title {
   #page-top-header ul li:nth-child(4):hover ~ .underbar {
     left: 253px;
     width: 132px;
-  }
-}
-
-@media (max-width: 1399px) {
-  #page-top-header.hide {
-    background-color: transparent;
-    border: none;
-    width: 0px;
-  }
-  #page-top-header {
-    background-color: white;
-    border: none;
-    width: 250px;
-    height: 100vh;
-    right: 0;
-    top: 0;
-    padding: 25px 25px 0 0;
-    -webkit-transition: 0.5s ease;
-    transition: 0.5s ease;
   }
 }
 

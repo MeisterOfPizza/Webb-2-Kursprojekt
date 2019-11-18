@@ -19,10 +19,10 @@ var onMouseMove;
 
 $(document).ready(function() {
     $("#open-menu-button").click(function() {
-        $("#page-top-header").removeClass("hide");
+        $("#page-top-header").addClass("show");
     });
     $("#close-menu-button").click(function() {
-        $("#page-top-header").addClass("hide");
+        $("#page-top-header").removeClass("show");
     });
 });
 
