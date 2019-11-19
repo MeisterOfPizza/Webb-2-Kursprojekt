@@ -218,6 +218,26 @@ div.parallax-block .title {
 
 div.parallax-divider {
   width: 100%;
+  -webkit-box-shadow: 0px 0px 20px 0px black;
+          box-shadow: 0px 0px 20px 0px black;
+}
+
+@media (min-width: 1400px) {
+  div.parallax-divider {
+    width: 75%;
+    margin: auto;
+    border-radius: 25px;
+  }
+}
+
+div.parallax-divider ~ div.parallax-block {
+  display: none;
+}
+
+@media (min-width: 1400px) {
+  div.parallax-divider ~ div.parallax-block {
+    display: inherit;
+  }
 }
 
 #page-top-header.show > nav {
@@ -327,12 +347,21 @@ div.parallax-divider {
   top: 25px;
   left: 25px;
   display: none;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
 }
 
 @media (min-width: 1400px) {
   #page-top-header nav #close-menu-button {
     display: none;
   }
+}
+
+#page-top-header nav #close-menu-button:hover {
+  -webkit-transform: rotateZ(360deg);
+          transform: rotateZ(360deg);
 }
 
 #page-top-header nav ul {
@@ -426,16 +455,27 @@ body section.form-container form fieldset {
 }
 
 body section.form-container form fieldset legend {
-  color: white;
+  color: orangered;
   font-size: 1.75em;
 }
 
 body section.form-container form fieldset label {
-  color: white;
+  color: black;
   font-size: 1.1em;
   display: block;
   margin-top: 15px;
   margin-bottom: 10px;
+}
+
+body section.form-container form fieldset input {
+  width: 100%;
+  resize: none;
+  font-family: questrial;
+  font-size: 0.9em;
+  border: 1px solid #07a771;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body section.form-container form fieldset textarea {
@@ -443,22 +483,52 @@ body section.form-container form fieldset textarea {
   resize: none;
   font-family: questrial;
   font-size: 0.9em;
+  border-color: #07a771;
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body section.form-container form fieldset hr {
   margin-top: 25px;
   margin-bottom: 25px;
-  background-color: white;
+  background-color: orangered;
   border-width: 0;
   height: 1px;
 }
 
-body section.form-container form fieldset input[type=submit] {
-  font-size: 1.1em;
-  background-color: white;
+body section.form-container form fieldset .form-btn {
+  position: relative;
+  display: inline-block;
   border-radius: 50px;
-  border: none;
+  overflow: hidden;
+}
+
+body section.form-container form fieldset .form-btn input[type=submit] {
+  font-size: 1.1em;
+  background-color: transparent;
+  border-radius: 50px;
+  border: 1px solid orangered;
   padding: 5px 50px;
   color: black;
+  z-index: 150;
+  position: relative;
+}
+
+body section.form-container form fieldset .form-btn .filler {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: orangered;
+  -webkit-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+  top: 0;
+  left: -100%;
+  z-index: 50;
+}
+
+body section.form-container form fieldset .form-btn:hover .filler {
+  left: 0;
 }
 /*# sourceMappingURL=form.css.map */
