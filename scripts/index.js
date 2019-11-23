@@ -36,13 +36,19 @@ $(window).resize(function() {
 function loadingDone() {
     animate();
 
-    onCursorHoldFinish = function() {
+    onCoreCallback("onCursorHoldFinish", function() {
         followCursor = true;
-    }
+    });
 
-    onCursorHoldEnd = function() {
+    onCoreCallback("onCursorUp", function() {
         followCursor = false;
-    }
+    });
+
+    $(window).scroll(function() {
+        let scale = Math.max(0.01, Math.min(1, 1 - window.scrollY / window.innerHeight));
+        model.scale.set(scale, scale, scale);
+        cursorStyling.opacity = 1 - window.scrollY / window.innerHeight;
+    });
 }
 
 function init() {
@@ -71,6 +77,10 @@ function init() {
         loader.load("../meshes/barren_1.glb", function (glb) {
             model = glb.scene.children[0];
             
+            let scale = Math.max(0.01, Math.min(1, 1 - window.scrollY / window.innerHeight));
+            model.scale.set(scale, scale, scale);
+            cursorStyling.opacity = 1 - window.scrollY / window.innerHeight;
+
             model.position.set(0, 0, 0);
 
             scene.add(model);

@@ -1,39 +1,44 @@
+// For the custom cursor //
+
 let cursor;
 let holdProgressBar;
 
 let cursorTargetPoint = { x: 0, y: 0 };
 
-let cursorStyling = {
+var cursorStyling = {
     "left": 0,
     "top": 0,
     "display": "block",
     "width": "0px",
-    "height": "0px"
+    "height": "0px",
+    "opactiy": 1
 }
 
 const holdTimeFinish = 0.25;
 
+// For the page side nav //
+
+let pageSideNav;
+let pageSideNavButtons;
+
+// Global variables to use //
+
 var lastCursorPoint = { x: 0, y: 0 };
 
-var onCursorHoldFinish;
-var onCursorHoldEnd;
-var onMouseMove;
+// Private variables for core utility //
+
+let events = { "onCursorHoldFinish": [], "onCursorUp": [], "onMouseMove": [], "onScroll": [] };
+
+let onCursorHoldFinish;
+let onCursorUp;
+let onScroll;
+let onMouseMove;
 
 function lerp(start, end, t) {
     return (1 - t) * start + t * end;
 }
 
-$(document).ready(function() {
-    $("#open-menu-button").click(function() {
-        $("#page-top-header").addClass("show");
-        $("#content").css("filter", "blur(5px)");
-
-    });
-    $("#close-menu-button").click(function() {
-        $("#page-top-header").removeClass("show");
-        $("#content").css("filter", "none");
-    });
-
+$(document).ready(function () {
     $(document).mousemove(function (event) {
         if (onMouseMove !== undefined) {
             onMouseMove(event, { x: event.pageX - lastCursorPoint.x, y: event.pageY - lastCursorPoint.y });
@@ -46,13 +51,48 @@ $(document).ready(function() {
         lastMousePoint = { x: event.pageX, y: event.pageY };
     });
 
+    $("#open-menu-button").click(function() {
+        $("#page-top-header").addClass("show");
+        $("#content").css("filter", "blur(5px)");
+
+    });
+
+    $("#close-menu-button").click(function() {
+        $("#page-top-header").removeClass("show");
+        $("#content").css("filter", "none");
+    });
+
+    pageSideNav        = $("#page-side-nav");
+    pageSideNavButtons = $("#page-side-nav a");
+
+    // Check if the element exists:
+    if (pageSideNav.length) {
+        pageSideNav.css("display", "block");
+
+        $(document).on("mousewheel", function() {
+            pageSideNavButtons.each(function () {
+                $(this).removeClass("selected");
+            });
+        });
+
+        pageSideNavButtons.click(function() {
+            pageSideNavButtons.each(function() {
+                $(this).removeClass("selected");
+            });
+
+            $(this).addClass("selected");
+        });
+
+        updatePageSideNav();
+    }
+
     $(".fracture-container").each(function () {
         $(this).mouseenter(function (e) {
             let children = $(this).children();
 
             if (!children.last().hasClass("fracture")) {
                 children.each(function (index) {
-                    let child = $(this);
+                    const child = $(this);
 
                     setTimeout(function () {
                         child.addClass("fracture");
@@ -73,6 +113,10 @@ $(document).ready(function() {
 
     updateCursor();
 });
+
+function onCoreCallback(type, callback) {
+    events[type].push(callback);
+}
 
 function createCustomMouse() {
     let cursorRadius = 10;
@@ -110,21 +154,23 @@ function createCustomMouse() {
         },
         step: (state, bar) => {
             if (bar.value() === 1) {
-                if (onCursorHoldFinish !== undefined) {
-                    onCursorHoldFinish();
-                }
+                events["onCursorHoldFinish"].forEach(event => {
+                    event();
+                });
             }
             else {
-                if (onCursorHoldEnd !== undefined) {
-                    onCursorHoldEnd();
-                }
+                events["onCursorUp"].forEach(event => {
+                    event();
+                });
             }
         }
     });
+
+    let customCursorContainer = $("#custom-cursor-container");
     
     $(document).mousemove(function (event) {
-        cursorTargetPoint.x = event.pageX;
-        cursorTargetPoint.y = event.pageY;
+        cursorTargetPoint.x = event.pageX - customCursorContainer.offset().left;
+        cursorTargetPoint.y = event.pageY - customCursorContainer.offset().top;
     });
 
     $(window).mousedown(function () {
@@ -145,4 +191,12 @@ function updateCursor() {
     if (cursor !== undefined) {
         cursor.css(cursorStyling);
     }
+}
+
+function updatePageSideNav() {
+    requestAnimationFrame(updatePageSideNav);
+
+    pageSideNav.css({
+        top: Math.max(pageSideNav.css("height").replace("px", "") / 2, lerp(pageSideNav.css("top").replace("px", ""), window.scrollY, 0.05)) + "px"
+    });
 }

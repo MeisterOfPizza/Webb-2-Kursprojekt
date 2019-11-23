@@ -76,7 +76,7 @@ div.game-scene {
 
     h2.title {
         font-size: 75px;
-        color: black;
+        color: orangered;
         text-shadow: 3px 3px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
         letter-spacing: 0.0625em;
         text-transform: uppercase;
@@ -86,12 +86,12 @@ div.game-scene {
     }
 
     a.btn {
-        background-color: #bcecff;
+        background-color: orangered;
         border-radius: 25px;
         display: inline-block;
         font-size: 25px;
         text-decoration: none;
-        color: black;
+        color: white;
         text-transform: uppercase;
         text-align: center;
         padding: 10px 40px;
@@ -99,6 +99,8 @@ div.game-scene {
         align-self: start;
         position: relative;
         pointer-events: all;
+        user-select: none;
+        cursor: pointer;
     }
 
     div#start-game-container {
@@ -115,14 +117,6 @@ div.game-scene {
     }
 
     div#game-over-container {
-        @include tablet {
-            grid-template-columns: 50% 50%;
-            grid-template-rows: 50% 50%;
-            grid-template-areas:
-            "title title"
-            "btn-left btn-right";
-        }
-
         pointer-events: none;
         position: absolute;
         width: 100%;
@@ -134,6 +128,14 @@ div.game-scene {
         "title"
         "btn-left"
         "btn-right";
+
+        @include tablet {
+            grid-template-columns: 50% 50%;
+            grid-template-rows: 50% 50%;
+            grid-template-areas:
+            "title title"
+            "btn-left btn-right";
+        }
 
         a:first-of-type {
             grid-area: btn-left;
@@ -148,6 +150,50 @@ div.game-scene {
 
             @include tablet {
                 justify-self: start;
+            }
+        }
+    }
+
+    #leaderboard {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        max-width: 250px;
+        border-left: 3px solid white;
+        padding-left: 10px;
+        max-height: 50vh;
+
+        h2 {
+            color: orangered;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+
+        #leaderboard-list {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            max-height: calc(50vh - 30px);
+
+            li {
+                margin: 0 15px 25px 10px;
+                user-select: none;
+                pointer-events: none;
+
+                h3 {
+                    color: orangered;
+                    font-size: 1.15em;
+                    margin: 0;
+                }
+
+                p {
+                    color: white;
+                    font-size: 1.05em;
+                    margin: 5px 0 0 15px;
+                }
             }
         }
     }

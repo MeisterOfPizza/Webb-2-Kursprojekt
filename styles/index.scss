@@ -25,13 +25,19 @@
 }
 
 body {
-    margin: 0;
     color: white;
     background-color: color(primary-bg-dark);
+    overflow-x: hidden;
 
     div.background {
         width: 100vw;
         height: 100vh;
+        position: fixed;
+        background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
+                    radial-gradient(ellipse at left, color(gradient-blue), transparent);
+        filter: saturate(0.9);
+        z-index: -25;
+        top: 0;
 
         .fly-in-text {
             position: fixed;
@@ -77,18 +83,59 @@ body {
     }
 }
 
-div.background-gradient {
-    position: fixed;
-    background: radial-gradient(ellipse at right, color(gradient-purple), transparent),
-                radial-gradient(ellipse at left, color(gradient-blue), transparent);
-    width: 100vw;
-    height: 100vh;
-    filter: saturate(0.9);
-    z-index: -25;
+div.parallax-block {
+    height: auto;
+
+    div.parallax-block--bg {
+        transition: transform 0.25s ease-in-out;
+    }
+
+    .title {
+        display: block;
+        padding: 150px 50px;
+        position: relative;
+        width: 100%;
+        text-align: right;
+        color: orangered;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 5px;
+            background-color: orangered;
+            transition: width 0.25s ease-in-out;
+        }
+    }
+
+    .title:hover a::after {
+        width: 100%;
+    }
+}
+
+div.parallax-block:hover div.parallax-block--bg-container div.parallax-block--bg {
+    transform: scale(1.25);
+}
+
+div.parallax-block:nth-child(even) > .title {
+    text-align: left;
+}
+
+div.upper-push {
+    margin-top: 100vh;
+    box-shadow: 0px -5px 20px 1px black;
 }
 
 #custom-cursor-container {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     overflow: hidden;

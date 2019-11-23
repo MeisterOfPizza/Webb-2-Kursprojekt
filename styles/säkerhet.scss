@@ -1,0 +1,97 @@
+@import "core";
+
+body {
+    color: white;
+
+    div.parallax-block {
+        height: 500px;
+    }
+
+    section.content-block {
+        width: 100%;
+        min-height: calc(100vh - 500px);
+        background-color: #080808;
+        box-shadow: 0px -5px 20px 1px black;
+        position: relative;
+        overflow: hidden;
+        z-index: 50;
+
+        article.säkerhet-container {
+            padding: 100px 15%;
+
+            h2 {
+                font-weight: 500;
+                font-size: 1.75em;
+                overflow: hidden;
+            }
+
+            h2:not(:first-child) {
+                margin-top: 50px;
+            }
+
+            p {
+                color: white;
+                font-size: 1.1em;
+            }
+
+            a {
+                color: orangered;
+                text-decoration: none;
+                position: relative;
+            }
+
+            a::after {
+                content: "";
+                height: 2px;
+                width: 0px;
+                background-color: orangered;
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                transition: width 0.5s;
+            }
+
+            a:hover::after {
+                width: 100%;
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            code {
+                background-color: #191919;
+                border-radius: 5px;
+                padding: 12px 15px;
+                font-size: 1.2em;
+                margin: 10px 10px 10px 0;
+                display: inline-block;
+                color: #c5c5c5;
+                overflow-x: auto;
+                white-space: nowrap;
+                max-width: 100%;
+                box-sizing: border-box;
+
+                span.keyword {
+                    color: #4587ff;
+                }
+
+                span.string {
+                    color: #ff4700;
+                }
+
+                span.value {
+                    color: #93de00;;
+                }
+                
+                span::selection {
+                    background: #9c27b0;
+                }
+
+                span::-moz-selection {
+                    background: #9c27b0;
+                }
+            }
+        }
+    }
+}

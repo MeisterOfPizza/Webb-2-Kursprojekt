@@ -74,11 +74,17 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+body {
+  margin: 0;
+}
+
 #content {
   -webkit-transition: -webkit-filter 1.5s;
   transition: -webkit-filter 1.5s;
   transition: filter 1.5s;
   transition: filter 1.5s, -webkit-filter 1.5s;
+  position: absolute;
+  width: 100%;
 }
 
 @media (min-width: 1400px) {
@@ -117,7 +123,7 @@ html {
 }
 
 div.logo-container {
-  position: absolute;
+  position: fixed;
   top: 25px;
   left: 25px;
   -webkit-animation: fade-in 0.5s ease-in-out;
@@ -128,6 +134,7 @@ div.logo-container {
           user-select: none;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+  z-index: 25;
 }
 
 div.logo-container img.logo {
@@ -175,13 +182,15 @@ div.parallax-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 div.parallax-block div.parallax-block--bg-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -25;
+  z-index: -1;
   overflow: hidden;
 }
 
@@ -281,7 +290,8 @@ div.parallax-divider ~ div.parallax-block {
   width: 100%;
   height: 100vh;
   pointer-events: none;
-  z-index: 10;
+  z-index: 100;
+  top: 0;
 }
 
 #page-top-header #open-menu-button {
@@ -432,23 +442,204 @@ div.parallax-divider ~ div.parallax-block {
     left: 253px;
     width: 132px;
   }
+  #page-top-header nav ul li:nth-child(5):hover ~ .underbar {
+    left: 410px;
+    width: 100px;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: #080808;
+  padding: 25px 50px;
+  -webkit-box-shadow: 0px 5px 20px 1px black;
+          box-shadow: 0px 5px 20px 1px black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+footer * {
+  font-weight: 500;
+}
+
+@-webkit-keyframes expand {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100vw;
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100vw;
+  }
 }
 
 body {
-  margin: 0;
   color: white;
 }
 
-body section.redovisning-container {
-  padding: 25px 25px;
+body div.parallax-block {
+  height: 500px;
 }
 
-body section.redovisning-container p {
+body section.content-block {
+  width: 100%;
+  min-height: calc(100vh - 500px);
+  background-color: #080808;
+  -webkit-box-shadow: 0px -5px 20px 1px black;
+          box-shadow: 0px -5px 20px 1px black;
+  position: relative;
+  overflow: hidden;
+  z-index: 50;
+}
+
+body section.content-block article.redovisning-container {
+  padding: 100px 15%;
+}
+
+body section.content-block article.redovisning-container h2 {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.75em;
+  overflow: hidden;
+}
+
+body section.content-block article.redovisning-container h2 span {
+  position: relative;
+}
+
+body section.content-block article.redovisning-container h2 span::before, body section.content-block article.redovisning-container h2 span::after {
+  content: "";
+  width: 100vw;
+  height: 2px;
+  background-color: white;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-animation: expand 2.5s ease-in-out;
+          animation: expand 2.5s ease-in-out;
+  position: absolute;
+  border-width: 0px;
+  border-style: solid;
+  border-color: white;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+body section.content-block article.redovisning-container h2 span::before {
+  right: 100%;
+  margin-right: 25px;
+}
+
+body section.content-block article.redovisning-container h2 span::after {
+  left: 100%;
+  margin-left: 25px;
+}
+
+body section.content-block article.redovisning-container h2:hover span::before, body section.content-block article.redovisning-container h2:hover span::after {
+  height: 0;
+  border-bottom-width: 2px;
+  border-top-width: 2px;
+  background-color: transparent;
+  padding: 5px 0;
+}
+
+body section.content-block article.redovisning-container h2:not(:first-child) {
+  margin-top: 50px;
+}
+
+body section.content-block article.redovisning-container p {
   color: white;
   font-size: 1.1em;
+  text-align: center;
 }
 
-body section.redovisning-container a {
+body section.content-block article.redovisning-container a {
   color: orangered;
+  text-decoration: none;
+  position: relative;
+}
+
+body section.content-block article.redovisning-container a::after {
+  content: "";
+  height: 2px;
+  width: 0px;
+  background-color: orangered;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+
+body section.content-block article.redovisning-container a:hover::after {
+  width: 100%;
+}
+
+#page-side-nav-container {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin-top: 100px;
+}
+
+#page-side-nav-container #page-side-nav {
+  position: absolute;
+  right: 25px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: right;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #page-side-nav-container #page-side-nav {
+    right: 50px;
+  }
+}
+
+@media (min-width: 1400px) {
+  #page-side-nav-container #page-side-nav {
+    right: 100px;
+  }
+}
+
+#page-side-nav-container #page-side-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#page-side-nav-container #page-side-nav ul li {
+  margin: 10px 0;
+}
+
+#page-side-nav-container #page-side-nav ul li a {
+  border-radius: 25px;
+  border: 1px solid white;
+  width: 13px;
+  height: 13px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  display: inline-block;
+}
+
+@media (min-width: 1400px) {
+  #page-side-nav-container #page-side-nav ul li a.selected {
+    background-color: orangered;
+    border-color: orangered;
+  }
+  #page-side-nav-container #page-side-nav ul li a:hover {
+    background-color: white;
+  }
+  #page-side-nav-container #page-side-nav ul li a.selected:hover {
+    background-color: orangered;
+  }
 }
 /*# sourceMappingURL=redovisning.css.map */

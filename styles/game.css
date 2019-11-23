@@ -74,11 +74,17 @@ html {
   text-rendering: optimizeLegibility;
 }
 
+body {
+  margin: 0;
+}
+
 #content {
   -webkit-transition: -webkit-filter 1.5s;
   transition: -webkit-filter 1.5s;
   transition: filter 1.5s;
   transition: filter 1.5s, -webkit-filter 1.5s;
+  position: absolute;
+  width: 100%;
 }
 
 @media (min-width: 1400px) {
@@ -117,7 +123,7 @@ html {
 }
 
 div.logo-container {
-  position: absolute;
+  position: fixed;
   top: 25px;
   left: 25px;
   -webkit-animation: fade-in 0.5s ease-in-out;
@@ -128,6 +134,7 @@ div.logo-container {
           user-select: none;
   -webkit-transition: 0.5s ease;
   transition: 0.5s ease;
+  z-index: 25;
 }
 
 div.logo-container img.logo {
@@ -175,13 +182,15 @@ div.parallax-block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
+  z-index: 1;
 }
 
 div.parallax-block div.parallax-block--bg-container {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: -25;
+  z-index: -1;
   overflow: hidden;
 }
 
@@ -281,7 +290,8 @@ div.parallax-divider ~ div.parallax-block {
   width: 100%;
   height: 100vh;
   pointer-events: none;
-  z-index: 10;
+  z-index: 100;
+  top: 0;
 }
 
 #page-top-header #open-menu-button {
@@ -432,6 +442,24 @@ div.parallax-divider ~ div.parallax-block {
     left: 253px;
     width: 132px;
   }
+  #page-top-header nav ul li:nth-child(5):hover ~ .underbar {
+    left: 410px;
+    width: 100px;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: #080808;
+  padding: 25px 50px;
+  -webkit-box-shadow: 0px 5px 20px 1px black;
+          box-shadow: 0px 5px 20px 1px black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+footer * {
+  font-weight: 500;
 }
 
 body {
@@ -511,7 +539,7 @@ div.game-scene div#game-ui-container h3 {
 
 div.game-scene h2.title {
   font-size: 75px;
-  color: black;
+  color: orangered;
   text-shadow: 3px 3px 0 white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
   letter-spacing: 0.0625em;
   text-transform: uppercase;
@@ -524,12 +552,12 @@ div.game-scene h2.title {
 }
 
 div.game-scene a.btn {
-  background-color: #bcecff;
+  background-color: orangered;
   border-radius: 25px;
   display: inline-block;
   font-size: 25px;
   text-decoration: none;
-  color: black;
+  color: white;
   text-transform: uppercase;
   text-align: center;
   padding: 10px 40px;
@@ -539,6 +567,11 @@ div.game-scene a.btn {
       align-self: start;
   position: relative;
   pointer-events: all;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 
 div.game-scene div#start-game-container {
@@ -606,5 +639,52 @@ div.game-scene div#game-over-container a:last-of-type {
     -ms-grid-column-align: start;
         justify-self: start;
   }
+}
+
+div.game-scene #leaderboard {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  max-width: 250px;
+  border-left: 3px solid white;
+  padding-left: 10px;
+  max-height: 50vh;
+}
+
+div.game-scene #leaderboard h2 {
+  color: orangered;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
+
+div.game-scene #leaderboard #leaderboard-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: calc(50vh - 30px);
+}
+
+div.game-scene #leaderboard #leaderboard-list li {
+  margin: 0 15px 25px 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+div.game-scene #leaderboard #leaderboard-list li h3 {
+  color: orangered;
+  font-size: 1.15em;
+  margin: 0;
+}
+
+div.game-scene #leaderboard #leaderboard-list li p {
+  color: white;
+  font-size: 1.05em;
+  margin: 5px 0 0 15px;
 }
 /*# sourceMappingURL=game.css.map */

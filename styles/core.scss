@@ -70,8 +70,14 @@ html {
     text-rendering: optimizeLegibility;
 }
 
+body {
+    margin: 0;
+}
+
 #content {
     transition: filter 1.5s;
+    position: absolute;
+    width: 100%;
 
     @include desktop {
         filter: none !important;
@@ -103,12 +109,13 @@ html {
 }
 
 div.logo-container {
-    position: absolute;
+    position: fixed;
     top: 25px;
     left: 25px;
     animation: fade-in 0.5s ease-in-out;
     user-select: none;
     transition: 0.5s ease;
+    z-index: 25;
 
     img.logo {
         width: 50px;
@@ -154,12 +161,14 @@ div.parallax-block {
     width: 100%;
     height: 100vh;
     display: flex;
+    position: relative;
+    z-index: 1;
 
     div.parallax-block--bg-container {
         position: absolute;
         width: 100%;
         height: 100%;
-        z-index: -25;
+        z-index: -1;
         overflow: hidden;
 
         div.parallax-block--bg {
@@ -242,7 +251,8 @@ div.parallax-divider ~ div.parallax-block {
     width: 100%;
     height: 100vh;
     pointer-events: none;
-    z-index: 10;
+    z-index: 100;
+    top: 0;
 
     #open-menu-button {
         border-radius: 50px;
@@ -354,19 +364,39 @@ div.parallax-divider ~ div.parallax-block {
                 li:nth-child(1):hover ~ .underbar {
                     width: 54px;
                 }
+
                 li:nth-child(2):hover ~ .underbar {
                     left: 92px;
                     width: 55px;
                 }
+
                 li:nth-child(3):hover ~ .underbar {
                     left: 173px;
                     width: 54px;
                 }
+
                 li:nth-child(4):hover ~ .underbar {
                     left: 253px;
                     width: 132px;
                 }
+
+                li:nth-child(5):hover ~ .underbar {
+                    left: 410px;
+                    width: 100px;
+                }
             }
         }
+    }
+}
+
+footer {
+    width: 100%;
+    background-color: #080808;
+    padding: 25px 50px;
+    box-shadow: 0px 5px 20px 1px black;
+    box-sizing: border-box;
+
+    * {
+        font-weight: 500;
     }
 }

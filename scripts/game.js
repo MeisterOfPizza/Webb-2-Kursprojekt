@@ -14,7 +14,7 @@ let renderPass, bloomPass, chromaticAberrationPass;
 
 let time          = 0;
 let deltaTime     = 0;
-let lastTimestamp = Date.now();
+let lastTimestamp = undefined;
 
 let   normalizedDragTilt = 0;
 const dragTilt           = 5;
@@ -37,6 +37,11 @@ const maxDifficultyTimeAlive  = 3600; // One factor raised to the power of 2.
 
 let scoreText;
 let timeAliveText;
+
+// Leaderboard //
+
+let leaderboard = []
+let leaderboardList;
 
 // Constants //
 
@@ -98,6 +103,9 @@ $(window).resize(function() {
 function start() {
     isStarted = true;
 
+    lastTimestamp = Date.now();
+
+    $("#game-ui-container").css("display", "inherit");
     $("#start-game-container").css("display", "none");
 
     setInterval(function () {
@@ -136,8 +144,12 @@ function init() {
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
-    scoreText = $("#score-text").first();
+    scoreText     = $("#score-text").first();
     timeAliveText = $("#time-alive-text").first();
+
+    leaderboardList = $("#leaderboard-list");
+
+    loadLeaderboard();
 
     $(document).keypress(function(e) {
         if (e.key.toLowerCase() == "a") {
@@ -392,6 +404,8 @@ function increaseScore() {
 function gameOver() {
     isGameOver = true;
 
+    createLeaderboardUser(prompt("Input username"), score, timeAlive);
+
     score     = 0;
     timeAlive = 0;
 
@@ -506,4 +520,55 @@ function addComposer() {
 	composer.addPass(chromaticAberrationPass);
 	composer.addPass(antialiasPass);
 	antialiasPass.renderToScreen = true;
+}
+
+function loadLeaderboard() {
+    let cookies = document.cookie;
+
+    // A leaderboard exists:
+    if (cookies !== undefined && cookies.length > 0) {
+        leaderboard = JSON.parse(cookies);
+
+        buildLeaderboardList();
+    }
+}
+
+function saveLeaderboard() {
+    document.cookie = JSON.stringify(leaderboard);
+}
+
+function createLeaderboardUser(username, score, timeAlive) {
+    if (!username || username.length === 0) {
+        username = "User " + randomInt(1, 1000);
+    }
+
+    leaderboard.push({ username, score, timeAlive });
+
+    // Sort the leaderboard by score and time alive (equal weight).
+    leaderboard.sort((a, b) => ((b.score - a.score) + (b.timeAlive - a.timeAlive)));
+
+    // Trim the array to a maximum length of 5.
+    leaderboard = leaderboard.slice(0, Math.min(leaderboard.length, 5));
+
+    buildLeaderboardList();
+
+    saveLeaderboard();
+}
+
+function buildLeaderboardList() {
+    leaderboardList.empty();
+
+    leaderboard.forEach(user => {
+        createLeaderboardUserItem(user);
+    });
+}
+
+function createLeaderboardUserItem(user) {
+    let element = $.parseHTML(
+    `<li>
+        <h3>${user.username}</h3>
+        <p>Got ${user.score} score in ${user.timeAlive.toFixed(1)} seconds</p>
+    </li>`);
+
+    leaderboardList.append(element);
 }

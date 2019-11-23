@@ -10,7 +10,7 @@
 <body>
     <div>
         <div id="game-scene" class="game-scene" style="touch-action: none;">
-            <div id="game-ui-container">
+            <div id="game-ui-container" style="display: none">
                 <h2 id="score-text">Score: 0</h2>
                 <h3 id="time-alive-text">Time alive: 0 seconds</h3>
             </div>
@@ -25,6 +25,10 @@
                 <h2 class="title">Game over!</h2>
                 <a class="btn shine-effect" onclick="retry()">Retry</a>
                 <a class="btn shine-effect" href="index.html">Home</a>
+            </div>
+            <div id="leaderboard">
+                <h2>Leaderboard</h2>
+                <ul id="leaderboard-list"></ul>
             </div>
         </div>
     </div>
