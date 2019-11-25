@@ -645,7 +645,7 @@ div.game-scene #leaderboard {
   position: absolute;
   top: 25px;
   left: 25px;
-  max-width: 250px;
+  max-width: 300px;
   border-left: 3px solid white;
   padding-left: 10px;
   max-height: 50vh;
@@ -663,8 +663,8 @@ div.game-scene #leaderboard #leaderboard-list {
   margin: 0;
   list-style-type: none;
   overflow-x: hidden;
-  overflow-y: scroll;
-  max-height: calc(50vh - 30px);
+  overflow-y: auto;
+  max-height: calc(50vh - 20px);
 }
 
 div.game-scene #leaderboard #leaderboard-list li {

@@ -51,8 +51,7 @@ const laneObjectTargetZ = 3;
 const asteroidCount     = 20;
 const asteroidRadius    = 0.2;
 const coinCount         = 10;
-const coinRadius        = 0.1;
-const coinHeight        = 0.05;
+const coinRadius        = 0.15;
 
 // Helper class.
 class GameObject {
@@ -356,7 +355,7 @@ function createCoinPool() {
     coins = [];
 
     for (let i = 0; i < coinCount; i++) {
-        geometry = new THREE.CylinderGeometry(coinRadius, coinRadius, coinHeight, 32);
+        geometry = new THREE.SphereGeometry(coinRadius, coinRadius, coinRadius);
         material = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
         const obj = new THREE.Mesh(geometry, material);

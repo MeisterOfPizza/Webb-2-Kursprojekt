@@ -462,6 +462,22 @@ footer * {
   font-weight: 500;
 }
 
+.shine-effect {
+  background-repeat: no-repeat;
+  background-position: -120px -120px, 0 0;
+  background-image: -webkit-gradient(linear, right bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(37%, rgba(255, 255, 255, 0.4)), color-stop(45%, rgba(255, 255, 255, 0.8)), color-stop(50%, rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to top left, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.4) 37%, rgba(255, 255, 255, 0.8) 45%, rgba(255, 255, 255, 0) 50%);
+  background-size: 250% 250%, 100% 100%;
+  -webkit-transition: background-position 0s ease;
+  transition: background-position 0s ease;
+}
+
+.shine-effect:hover {
+  background-position: 0 0, 0 0;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
 body {
   color: white;
 }
@@ -524,38 +540,15 @@ body section.form-container form fieldset hr {
   height: 1px;
 }
 
-body section.form-container form fieldset .form-btn {
-  position: relative;
-  display: inline-block;
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-body section.form-container form fieldset .form-btn input[type=submit] {
+body section.form-container form fieldset input[type=submit] {
+  width: 250px;
   font-size: 1.1em;
-  background-color: transparent;
-  border-radius: 50px;
-  border: 1px solid orangered;
-  padding: 5px 50px;
-  color: black;
-  z-index: 150;
-  position: relative;
-}
-
-body section.form-container form fieldset .form-btn .filler {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
+  color: white;
   background-color: orangered;
-  -webkit-transition: left 0.5s ease;
-  transition: left 0.5s ease;
-  top: 0;
-  left: -100%;
-  z-index: 50;
-}
-
-body section.form-container form fieldset .form-btn:hover .filler {
-  left: 0;
+  border-radius: 50px;
+  padding: 5px 50px;
+  border: none;
+  display: block;
+  margin: auto;
 }
 /*# sourceMappingURL=form.css.map */
