@@ -550,5 +550,6 @@ body section.form-container form fieldset input[type=submit] {
   border: none;
   display: block;
   margin: auto;
+  cursor: pointer;
 }
 /*# sourceMappingURL=form.css.map */

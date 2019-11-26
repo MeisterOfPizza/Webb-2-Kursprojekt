@@ -585,8 +585,10 @@ body section.content-block article.redovisning-container a:hover::after {
 #page-side-nav-container {
   position: absolute;
   width: 100%;
+  height: calc(100% - 200px);
   top: 0;
-  margin-top: 100px;
+  margin: 100px 0;
+  pointer-events: none;
 }
 
 #page-side-nav-container #page-side-nav {
@@ -596,6 +598,7 @@ body section.content-block article.redovisning-container a:hover::after {
           transform: translateY(-50%);
   text-align: right;
   display: none;
+  pointer-events: all;
 }
 
 @media (min-width: 768px) {
@@ -622,7 +625,7 @@ body section.content-block article.redovisning-container a:hover::after {
 
 #page-side-nav-container #page-side-nav ul li a {
   border-radius: 25px;
-  border: 1px solid white;
+  border: 2px solid white;
   width: 13px;
   height: 13px;
   -webkit-transition: all 0.25s;

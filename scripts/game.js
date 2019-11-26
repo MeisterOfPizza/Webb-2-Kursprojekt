@@ -227,7 +227,7 @@ function animate() {
     requestAnimationFrame(gameLoop);
 
     ship.obj.position.lerp(new THREE.Vector3((laneIndex - 1) * laneWidth, 0, 0), 0.1);        
-    ship.obj.translateY(pingPong(time, 0.005, 3));
+    ship.obj.translateY(pingPong(time, 0.005, 3) - 0.01);
     ship.obj.rotateZ(degToRad(normalizedDragTilt));
     normalizedDragTilt = THREE.Math.lerp(normalizedDragTilt, 0, 0.1);
 

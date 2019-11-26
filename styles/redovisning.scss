@@ -109,8 +109,10 @@ body {
 #page-side-nav-container {
     position: absolute;
     width: 100%;
+    height: calc(100% - 200px);
     top: 0;
-    margin-top: 100px;
+    margin: 100px 0;
+    pointer-events: none;
 
     #page-side-nav {
         position: absolute;
@@ -118,6 +120,7 @@ body {
         transform: translateY(-50%);
         text-align: right;
         display: none;
+        pointer-events: all;
 
         @include tablet {
             right: 50px;
@@ -137,7 +140,7 @@ body {
 
                 a {
                     border-radius: 25px;
-                    border: 1px solid white;
+                    border: 2px solid white;
                     width: 13px;
                     height: 13px;
                     transition: all 0.25s;

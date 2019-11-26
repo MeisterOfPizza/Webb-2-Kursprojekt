@@ -18,6 +18,7 @@ const holdTimeFinish = 0.25;
 
 // For the page side nav //
 
+let pageSideNavContainer;
 let pageSideNav;
 let pageSideNavButtons;
 
@@ -62,8 +63,9 @@ $(document).ready(function () {
         $("#content").css("filter", "none");
     });
 
-    pageSideNav        = $("#page-side-nav");
-    pageSideNavButtons = $("#page-side-nav a");
+    pageSideNavContainer = $("#page-side-nav-container");
+    pageSideNav          = $("#page-side-nav");
+    pageSideNavButtons   = $("#page-side-nav a");
 
     // Check if the element exists:
     if (pageSideNav.length) {
@@ -196,7 +198,11 @@ function updateCursor() {
 function updatePageSideNav() {
     requestAnimationFrame(updatePageSideNav);
 
+    let pageSideNavContainerHeight = pageSideNavContainer.css("height").replace("px", "");
+    let pageSideNavHeight          = pageSideNav.css("height").replace("px", "") / 2;
+    let pageSideNavTop             = pageSideNav.css("top").replace("px", "");
+
     pageSideNav.css({
-        top: Math.max(pageSideNav.css("height").replace("px", "") / 2, lerp(pageSideNav.css("top").replace("px", ""), window.scrollY, 0.05)) + "px"
+        top: Math.min(pageSideNavContainerHeight - pageSideNavHeight, Math.max(pageSideNavHeight, lerp(pageSideNavTop, window.scrollY - pageSideNavContainer.offset().top / 2 + pageSideNavHeight, 0.05))) + "px"
     });
 }
