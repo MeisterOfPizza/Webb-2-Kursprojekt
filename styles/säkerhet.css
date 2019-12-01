@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
-  font-family: "turret-road";
-  src: url("../fonts/Turret_Road/TurretRoad-Regular.ttf");
+  font-family: "open-sans";
+  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
 @font-face {
@@ -69,7 +69,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: questrial;
+  font-family: questrial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -101,6 +101,13 @@ body {
 
 .wide {
   width: 100vw;
+}
+
+@media (min-width: 1400px) {
+  .anchor {
+    position: relative;
+    top: -65px;
+  }
 }
 
 .desktop-exclude {
@@ -449,6 +456,70 @@ div.parallax-divider ~ div.parallax-block {
   }
 }
 
+#page-side-nav-container {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 200px);
+  top: 0;
+  margin: 100px 0;
+  pointer-events: none;
+}
+
+#page-side-nav-container #page-side-nav {
+  position: absolute;
+  right: 25px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: right;
+  display: none;
+  pointer-events: all;
+}
+
+@media (min-width: 768px) {
+  #page-side-nav-container #page-side-nav {
+    right: 50px;
+  }
+}
+
+@media (min-width: 1400px) {
+  #page-side-nav-container #page-side-nav {
+    right: 100px;
+  }
+}
+
+#page-side-nav-container #page-side-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#page-side-nav-container #page-side-nav ul li {
+  margin: 10px 0;
+}
+
+#page-side-nav-container #page-side-nav ul li a {
+  border-radius: 25px;
+  border: 2px solid white;
+  width: 13px;
+  height: 13px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  display: inline-block;
+}
+
+@media (min-width: 1400px) {
+  #page-side-nav-container #page-side-nav ul li a.selected {
+    background-color: orangered;
+    border-color: orangered;
+  }
+  #page-side-nav-container #page-side-nav ul li a:hover {
+    background-color: white;
+  }
+  #page-side-nav-container #page-side-nav ul li a.selected:hover {
+    background-color: orangered;
+  }
+}
+
 footer {
   width: 100%;
   background-color: #080808;
@@ -484,16 +555,25 @@ body section.content-block {
 
 body section.content-block article.säkerhet-container {
   padding: 100px 15%;
+  font-family: 'open-sans', sans-serif;
+}
+
+body section.content-block article.säkerhet-container h1, body section.content-block article.säkerhet-container h2, body section.content-block article.säkerhet-container h3, body section.content-block article.säkerhet-container h4, body section.content-block article.säkerhet-container h5 {
+  font-weight: 500;
+  text-align: center;
+  overflow: hidden;
 }
 
 body section.content-block article.säkerhet-container h2 {
-  font-weight: 500;
   font-size: 1.75em;
-  overflow: hidden;
 }
 
 body section.content-block article.säkerhet-container h2:not(:first-child) {
   margin-top: 50px;
+}
+
+body section.content-block article.säkerhet-container h3 {
+  font-size: 1.25em;
 }
 
 body section.content-block article.säkerhet-container p {
@@ -528,6 +608,22 @@ body section.content-block article.säkerhet-container img {
 }
 
 body section.content-block article.säkerhet-container code {
+  display: block;
+}
+
+body section.content-block article.säkerhet-container code span::-moz-selection {
+  background: #9c27b0;
+}
+
+body section.content-block article.säkerhet-container code span::selection {
+  background: #9c27b0;
+}
+
+body section.content-block article.säkerhet-container code span::-moz-selection {
+  background: #9c27b0;
+}
+
+body section.content-block article.säkerhet-container code > span {
   background-color: #191919;
   border-radius: 5px;
   padding: 12px 15px;
@@ -542,27 +638,87 @@ body section.content-block article.säkerhet-container code {
           box-sizing: border-box;
 }
 
-body section.content-block article.säkerhet-container code span.keyword {
-  color: #4587ff;
+body section.content-block article.säkerhet-container code > span span {
+  white-space: pre;
 }
 
-body section.content-block article.säkerhet-container code span.string {
-  color: #ff4700;
-}
-
-body section.content-block article.säkerhet-container code span.value {
+body section.content-block article.säkerhet-container code > span span.keyword {
   color: #93de00;
 }
 
-body section.content-block article.säkerhet-container code span::-moz-selection {
-  background: #9c27b0;
+body section.content-block article.säkerhet-container code > span span.pointer {
+  color: #4587ff;
 }
 
-body section.content-block article.säkerhet-container code span::selection {
-  background: #9c27b0;
+body section.content-block article.säkerhet-container code > span span.string {
+  color: #ff4700;
 }
 
-body section.content-block article.säkerhet-container code span::-moz-selection {
-  background: #9c27b0;
+body section.content-block article.säkerhet-container code > span span.int {
+  color: #e4ff00;
+}
+
+body section.content-block article.säkerhet-container #hash-input {
+  font-size: 1.05em;
+  border-radius: 50px;
+  padding: 5px 25px 5px 10px;
+  background-color: #191919;
+  border: none;
+  width: 250px;
+  max-width: 100%;
+  color: white;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body section.content-block article.säkerhet-container #hash-output {
+  font-size: 1.05em;
+  border-radius: 50px;
+  padding: 5px 15px;
+  background-color: #191919;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body section.content-block article.säkerhet-container div.table-container {
+  margin: 25px 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+body section.content-block article.säkerhet-container div.table-container table {
+  background-color: #191919;
+  font-size: 1.05em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+body section.content-block article.säkerhet-container div.table-container table tr:first-child > th {
+  text-align: center;
+}
+
+body section.content-block article.säkerhet-container div.table-container table tr > td:nth-child(1) {
+  min-width: 50px;
+  max-width: 100px;
+  width: 10%;
+}
+
+body section.content-block article.säkerhet-container div.table-container table th, body section.content-block article.säkerhet-container div.table-container table td {
+  padding: 15px;
+  border: 2px solid #646464;
+}
+
+body section.content-block article.säkerhet-container div.table-container + p > i, body section.content-block article.säkerhet-container img + p > i {
+  font-size: 0.9em;
+}
+
+body section.content-block article.säkerhet-container video {
+  width: 100%;
 }
 /*# sourceMappingURL=säkerhet.css.map */

@@ -5,7 +5,7 @@ function send(form) {
         form.reset();
     }
     else {
-        alert("The improvements text needs to be at least 25 characters long.");
+        alert("Förbättrings texten måste innehålla åtminstone 25 karaktärer!");
     }
 
     return false;

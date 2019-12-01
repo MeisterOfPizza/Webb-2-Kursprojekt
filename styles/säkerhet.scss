@@ -18,15 +18,24 @@ body {
 
         article.säkerhet-container {
             padding: 100px 15%;
+            font-family: 'open-sans', sans-serif;
+
+            h1, h2, h3, h4, h5 {
+                font-weight: 500;
+                text-align: center;
+                overflow: hidden;
+            }
 
             h2 {
-                font-weight: 500;
                 font-size: 1.75em;
-                overflow: hidden;
             }
 
             h2:not(:first-child) {
                 margin-top: 50px;
+            }
+
+            h3 {
+                font-size: 1.25em;
             }
 
             p {
@@ -60,6 +69,18 @@ body {
             }
 
             code {
+                display: block;
+                
+                span::selection {
+                    background: #9c27b0;
+                }
+
+                span::-moz-selection {
+                    background: #9c27b0;
+                }
+            }
+
+            code > span {
                 background-color: #191919;
                 border-radius: 5px;
                 padding: 12px 15px;
@@ -72,7 +93,15 @@ body {
                 max-width: 100%;
                 box-sizing: border-box;
 
+                span {
+                    white-space: pre;
+                }
+
                 span.keyword {
+                    color: #93de00;
+                }
+
+                span.pointer {
                     color: #4587ff;
                 }
 
@@ -80,17 +109,68 @@ body {
                     color: #ff4700;
                 }
 
-                span.value {
-                    color: #93de00;;
+                span.int {
+                    color: #e4ff00;
                 }
-                
-                span::selection {
-                    background: #9c27b0;
-                }
+            }
 
-                span::-moz-selection {
-                    background: #9c27b0;
+            #hash-input {
+                font-size: 1.05em;
+                border-radius: 50px;
+                padding: 5px 25px 5px 10px;
+                background-color: #191919;
+                border: none;
+                width: 250px;
+                max-width: 100%;
+                color: white;
+                box-sizing: border-box;
+            }
+
+            #hash-output {
+                font-size: 1.05em;
+                border-radius: 50px;
+                padding: 5px 15px;
+                background-color: #191919;
+                width: fit-content;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            div.table-container {
+                margin: 25px 0;
+                width: 100%;
+                overflow-x: auto;
+
+                table {
+                    background-color: #191919;
+                    font-size: 1.05em;
+                    box-sizing: border-box;
+                    text-align: left;
+                    border-collapse: collapse;
+
+                    tr:first-child > th {
+                        text-align: center;
+                    }
+
+                    tr > td:nth-child(1) {
+                        min-width: 50px;
+                        max-width: 100px;
+                        width: 10%;
+                    }
+
+                    th, td {
+                        padding: 15px;
+                        border: 2px solid rgb(100, 100, 100);
+                    }
                 }
+            }
+
+            div.table-container + p > i, img + p > i {
+                font-size: 0.9em;
+            }
+
+            video {
+                width: 100%;
             }
         }
     }

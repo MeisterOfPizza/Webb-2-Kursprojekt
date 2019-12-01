@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "turret-road";
-  src: url("../fonts/Turret_Road/TurretRoad-Regular.ttf");
+  font-family: "open-sans";
+  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
 @font-face {
@@ -68,7 +68,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: questrial;
+  font-family: questrial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;

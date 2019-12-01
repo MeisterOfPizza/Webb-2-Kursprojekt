@@ -47,56 +47,365 @@
         </div>
         <section class="content-block">
             <article class="säkerhet-container">
-                <h2 id="projektplan">
-                    <span>Projektplan</span>
-                </h2>
-                <p>Jag har tänkt mig att webbsidan ska ha 4 st sidor, där varje sida har en enhetlig design med likadana färger
-                    (svart, vitt, blått och magenta) sam samma layout (förutom spelet). Generella designen påminner väldigt
-                    mycket om en minimalistisk design med två starka färgglada färger som används mer för utseendet samt två
-                    motsatta färger (svart och vitt) som används för för text och knappar. Detta eftersom kontrasten mellan
-                    svart och vitt samt bakgrunden gör det enkelt för användaren att hitta de viktiga delarna på sidan (t.ex
-                    knappar).
+                <h2><a class="anchor" id="introduktion"></a>Introduktion</h2>
+                <p>
+                    Säkerhet är något vi människor föredrar, vilket inte är så konstigt. Ända sedan människans uppkomst har vi behövt
+                    akta oss, inte bara för fiender ute i det vilda men också för varandra. Dock så är det inte förrän de senaste 100
+                    åren eller så som vi har behövt skydda oss mot virtuella hot. Skillnaden mellan ett data inbrott idag och för 30 år
+                    sedan är inte bara kvalitén men också mängden data som stjäls. Denna text kommer att uppmärksamma några hot som kan
+                    uppkomma på webben i dåtid, samtid och framtid, samt hur vi kan och skulle kunna skydda oss mot dem från ett
+                    vardagligt och utvecklar perspektiv.
                 </p>
-                <h2 id="bilder">
-                    <span>Bilder</span>
-                </h2>
-                <p>De stora bilderna som förekommer sällan (såsom bakgrund, foton, skärmdumpar osv.) kommer att vara JPEG:s
-                    eftersom den sparar datan i ett ”lossy” (löst) format vilket ger en sämre upplösning i utbyte mot mindre
-                    filstorlekar. PNG:s kommer att användas för de mindre bilderna (t.ex loggor) eftersom de är det motsatta av
-                    JPEG:s vilket gör dem bra att använda när man ska ha högupplösta bilder. Eftersom PNG:s oftast är i mindre
-                    upplösning så är nedladdningshastigheten försumbar.
+                <h2><a class="anchor" id="uppkomst"></a>Webbens uppkomst</h2>
+                <p>
+                    Webben, även kallad för World Wide Web (därav förkortningen <i>WWW</i>) (inte för att missta för <i>internet</i>) uppkom i
+                    december 1990 efter att Berners-Lee använde en NeXT dator som värd för en web server samt för att skriva den första
+                    webbsidan på. Det var dock inte förrän år 1993 med frisläppandet av webbläsaren Mosaic som webbsurfning liknandes
+                    idag blev tillgängligt. Med Mosaic kunde användaren se bilder och videor samt läsa text. Webbsidorna skapades med
+                    HTML som de gör än idag.
                 </p>
-                <h2 id="webbläsare">
-                    <span>Webbläsare</span>
-                </h2>
-                <p>Jag ska testa sidan i Chrome och Firefox. Sidan kommer att använda två olika typsnitt, ett till spelet och
-                    ett till resten av sidan.
+                <h3>Hot och skydd</h3>
+                <p>
+                    I början av webbens uppkomst fanns det inte många hot på webben då det inte var tillräckligt populärt för den
+                    vardagliga användaren ännu. Därav var det inte heller någon större anledning till att skydda sig mot något på
+                    webben.
                 </p>
-                <h2 id="kravspecifikationen">
-                    <span>Kravspecifikationen</span>
-                </h2>
-                <p>Kravspecifikationen har jag lyckats följt genom att ha en klar plan nedskriven som jag alltid kunde kolla på
-                    om jag glömde bort något.
+                <h2><a class="anchor" id="samtid"></a>Samtid</h2>
+                <p>
+                    Med tanke på den allt snabbare utvecklingen av all teknologi, inklusive datorer, internet m.m. är det inte konstigt
+                    att vi måste konstant hålla oss uppdaterade mot hot genom att t.ex. uppfinna nya algoritmer och system som kan
+                    skydda oss. I avseende till globaliseringen och mass spridd tillgång till internet genom olika tjänster och system
+                    skapas ett snabbt muterande fält som är svårt att hålla sig uppdaterad med. Nu för tiden kräver många företag som
+                    specialiserar sig i förvarningen av personlig data konstant övervakning och underhållning av sina system. Denna
+                    konstanta övervakning och underhållning kostar givetvis enormt mycket pengar samt flera dussintal (om inte
+                    hundratals) utvecklare, något som de flesta företagen inte har råd med. Därav finns det en stor risk att många
+                    företag endast gör det minsta möjliga utan att bryta lagen när det kommer till förvaringen av personlig data.
                 </p>
-                <h2 id="utvärdering">
-                    <span>Utvärdering</span>
-                </h2>
-                <p>Det enda som var utmanande var spelet då jag inte har implementerat ett spel i 3D på webben tidigare. Därav
-                    så har jag lärt mig mer om ramverket <a href="https://threejs.org/">Three.js</a> samt hur OpenGL fungerar på
-                    en browser. Resultatet är jag väldigt nöjd med, och det är något som jag även vill förbättra senare.
+                <p>
+                    På grund av denna vägran att ta förvaringen på fullaste allvar har ett flertal jobbmöjligheter för kriminella
+                    människor öppnats. Dessa "jobb" bygger på att försöka stjäla och använda den information som tillhör användare mot
+                    dem själva, genom att sälja datan till en reklambyrå, privatperson, stat, regering, eller annat företag. Det finns
+                    också risk för att anfallaren helt enkelt sprider din privata information för att utpressa dig.
+                </p>
+                <p>
+                    Det finns flertal sätt för en potentiell gärningsman att få tag på din information. Några av dessa sätt handlar om
+                    avancerade dataprogram oftast kallade <i>malware</i> eller <i>virus</i>, andra sätt handlar om att "lura" servern att skicka
+                    tillbaka information som egentligen inte ska vara tillgängligt till användare (kallas oftast för <i>SQL injections</i>),
+                    men det kan också helt enkelt vara social manipulation (engelska <i>social engineering</i>) där anfallaren falskt uttalar
+                    sig som en etablerad person eller företag vars uppgift är att samla ihop data från användarna.
+                </p>
+                <h2><a class="anchor" id="malware"></a>Malware</h2>
+                <p>
+                    Malware (malicious software) är ett samlingsnamn för mjukvara vars uppgift är att skada datorn, stjäla information
+                    eller helt enkelt visa reklam för en viss produkt eller för ett visst företag. Det är även viktigt att komma ihåg
+                    att malware <strong>inte</strong> är samma sak som en bugg. En bugg i mjukvara är, även om den skadar datorn, ett misstag eller en
+                    översikt av utvecklarna vilket resulterar i programkrasch eller liknande. Malware är designad för att drabba
+                    användaren medvetet, till skillnad från en bugg. Malware kan vem som helst som surfar på internet få. Det handlar
+                    egentligen bara om hur skyddad du är med hjälp av antivirusprogram såsom ESET Nod32 eller Malwarebytes. De
+                    vanligaste sätten att få malware på är genom länkar till olika hemsidor men huvudsakligen genom nedladdningar av
+                    skadlig programvara.
+                </p>
+                <p>
+                    För att ta bort malware krävs olika antivirusprogram såsom ESET Nod32 eller Malwarebytes (som nämnt ovan). Det är
+                    näst intill omöjligt att manuellt leta efter malware eftersom de maskerar sig på avancerade sätt, samt att
+                    teknologien och metoderna att göra så ändras dagligen. Antivirusprogram använder sig av algoritmer och "brute force"
+                    metoder för att upptäcka potentiella skadliga program och filer, något som förfinas dag för dag, men som samtidigt
+                    blir svårare eftersom skaparna av de skadliga programmen också ändrar sina program och metoder dagligen.
+                </p>
+                <h3>Virus</h3>
+                <p>
+                    Virus fungerar precis som de låter. De är oftast gömda bland andra program och sprids sedan till andra filplatser
+                    genom att duplicera sig själv. Anledningen kan helt enkelt vara att förstöra data men det kan även vara för att
+                    preparera servern eller klienten för annat malware i framtiden genom att implementera bakdörrar (se nedan). Det
+                    farliga med virus är att de kan överföras mellan datorer utan att man vet om det.
+                </p>
+                <h3>Bakdörrar</h3>
+                <p>
+                    En bakdörr (kallas <i>backdoor</i> från engelskan) används primärt för att få tillgång till system och filer som man
+                    egentligen inte ska ha tillgång till. Dessa bakdörrar kan sedan användas för att installera framtida bakdörrar som
+                    är ännu mera avancerade och svårhittade, något som gör det till ett stort hot. Bakdörrar kan bli installerade genom
+                    trojanska hästar (se nedan) eller helt enkelt genom fil överföringssystem.
+                </p>
+                <h3>Trojanska hästar</h3>
+                <p>
+                    Trojanska hästar får sitt namn från den antika grekiska historien <i>Trojanska Hästen</i> där grekerna använde sig av en
+                    trähäst för att ta sig in i staden <i>Troy</i> och vinna kriget. En trojansk häst kan vara ett program, vilket som helst,
+                    som inte riktigt är vad den säger sig vara. När programmet exekveras installeras skadlig programvara. Den skadliga
+                    koden brukar inte vara av virus typen då det är vanligast att det är bakdörrar som installeras. Ett exempel på en
+                    trojansk häst är Proton Remote Access Trojan (RAT) som var designad att försöka stjäla lösenord m.m. från Mac-OS
+                    användare.
+                </p>
+                <h3>Maskar</h3>
+                <p>
+                    Maskar är självstående programvara som inte alltid är gjorda för att skada användarens system på något sätt. Maskar
+                    är oftast gjorda för att sprida sig vidare, dock så gör det inte maskar mindre farligare. Maskar kan ha en stor
+                    effekt på datorns internet hastighet. Maskar kan dock bära med sig skadlig programvara, som då oftast kallas en
+                    "payload".
+                </p>
+                <h2><a class="anchor" id="kod-injektion"></a>Kod injektion</h2>
+                <p>
+                    Skadlig program är som sagt inte det enda hotet på internet. Kod injektion används oftast för att få tillgång till
+                    data som man egentligen inte ska ha tillgång till genom att, som namnet beskriver, injicera kod som exekveras av ett
+                    databasprogram, såsom <i>SQL</i> (Structured Query Language). Det finns många olika sätt att hindra ett sådant anfall genom
+                    att analysera inmatningen av användare. Dock är det väldigt enkelt att missa en potentiell anfallsvinkel när man
+                    utvecklar större program, vilket gör det enkelt för potentiella "inbrott".
+                </p>
+                <h3>SQL injection</h3>
+                <p>
+                    En SQL injection kan ske när utvecklarna inte har implementerat tillräckligt med säkerhetsåtgärder för att hantera
+                    databas anropningar (<i>GET</i> anropningar som de kallas) från klientens webbläsare. Denna typen av attack görs för att få
+                    en data dump av varierande storlek, från liten till massiv. En data dump är när data "dumpas" (slängs, kastas) på
+                    användaren. Attacken tillåter anfallaren att ändra, ta bort, eller lägga till data.
+                </p>
+                <p>
+                    SQL är sätt att spara, ta hand om och nå data på ett smart och snabbt sätt. Det är alltså inte en server. Det finns
+                    flertal olika SQL program, såsom <i>MySQL</i>, <i>Microsoft SQL</i>. Administratörer och program som använder sig utav SQL
+                    databaser kan ange olika instruktioner för att hämta, ta bort och lägga till data. Datan sparas vanligtvis i
+                    tabeller med unika namn, där varje "objekt" är indexerat 0 till oändligt. Varje objekt (rad eller kolumn) är fylld
+                    med olika fält med sina egna värden, eller med <i>foreign keys</i> som pekar på andra tabeller och objekt.
+                </p>
+                <p>
+                    Ett exempel på en databas som sparar användare (användarnamn, e-mail och lösenord) och vilka kommentarer som de
+                    gjort (nyckel till användare som kommentera, kommentar och när de kommenterade) kan hittas nedan:
+                </p>
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th colspan="4">UserTable</th>
+                            </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>"Adam"</td>
+                                <td>"adam@example.com"</td>
+                                <td>carrot123</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>"Pelle"</td>
+                                <td>"pelle@example.com"</td>
+                                <td>apple321</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><i>Notera att lösenord <strong>alltid</strong> ska vara krypterade, men i detta exempel så är de inte det pga läsbarhet.</i></p>
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th colspan="4">CommentTable</th>
+                            </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>AuthorForeignKey</th>
+                                <th>Comment</th>
+                                <th>PostDate</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>"God jul Pelle!"</td>
+                                <td>2019-12-24 12:34:10</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>"God jul du med Adam!"</td>
+                                <td>2019-12-24 12:45:23</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>":)"</td>
+                                <td>2019-12-24 13:02:55</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    <i>AuthorForeignKey</i> i <i>CommentTable</i> pekar på en användare i <i>UserTable</i> med samma nyckel. Exemplet visar att användaren
+                    Adam skriver "God jul Pelle!" och Pelle som sedan svarar med ett god jul tillbaka, följt av Adam som skriver en
+                    smiley.
+                </p>
+                <p>
+                    För att visa ett exempel på hur SQL hanterar data förfrågningar, låt oss säga att adressen för sidan är
+                    <i>www.testchatt.se</i> och du som läser kommentaren med nyckeln (ID:t) 1 är på sidan med URL:n
+                    <i>http://www.testchatt.se/comments.php?<strong>ID=1</strong></i>. Låt oss nu låtsas att du vill läsa vad Adam svarade på Pelles kommentar,
+                    så du trycker på kommentaren med nyckeln 2. Nu ändras URL:n till <i>http://www.testchatt.se/comments.php?<strong>ID=2</strong></i> och ett
+                    SQL kommando skapas och exekveras. Kommandot lyder:
                 </p>
                 <code>
-                    <span><span class="keyword">SELECT</span> <span class="value">NAME</span> <span class="keyword">FROM</span> <span class="value">PEOPLE</span> <span class="keyword">WHERE</span> <span class="value">COUNTRY</span> = <span class="string">"US"</span></span>
+                    <span><span class="keyword">SELECT</span> <span class="pointer">*</span> <span class="keyword">FROM</span> <span class="pointer">UserTable</span> <span class="keyword">WHERE</span> <span class="pointer">UserTable.ID</span> = <span class="int">2</span> <span class="keyword"></span>
                 </code>
-                <img alt="hash map" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Hash_function.svg/1200px-Hash_function.svg.png">
+                <p>
+                    Kommandot exekveras och ger tillbaka kommentaren (<i>ID</i>, <i>AuthorForeignKey</i>, <i>Comment</i> och <i>PostDate</i>). Det finns dock en
+                    risk med det här. Eftersom kommandot skapas av det som lyder efter <i>.php?</i> så kan man skicka in fler instruktioner.
+                    T.ex. så kan man använda sig utav OR logik. Om en användare skulle vilja hämta alla kommentarer så skulle de använda
+                    sig utav URL:n <i>http://www.testchatt.se/comments.php?<strong>=0 OR 1=1</strong></i>. <i>OR</i> kommandot hämtar alla kommentarer med ID 0 <strong>eller</strong>
+                    om 1=1 är sant (vilket det är). Därav skickar servern tillbaka alla kommentarer. Kommandot skulle se ut så här:
+                </p>
+                <code>
+                    <span><span class="keyword">SELECT</span> <span class="pointer">*</span> <span class="keyword">FROM</span> <span class="pointer">UserTable</span> <span class="keyword">WHERE</span> <span class="pointer">UserTable.ID</span> = <span class="int">0</span> <span class="keyword">OR</span> <span class="string">"1"</span>=<span class="string">"1"</span></span>
+                </code>
+                <p>
+                    Detta exempel verkar inte farligt, men det är det. Om du har hundratusentals kommentarer kommer servern säkerligen
+                    krascha när den försöker skicka alla kommentarer, vilket kan leda till att dina användare inte kan använda din
+                    tjänst förrän du har fixat problemet. Det kan även leda till att anfallaren får tag i kommentarer som kanske är
+                    privata eller för vänner endast.
+                </p>
+                <p>
+                    I ett annat exempel så kanske anfallaren har full kontroll över databasen och kan alltså exekvera vilket kommando
+                    som de än vill. Om vi använder oss utav samma tabeller som i det tidigare exemplet så skulle en anfallare kunna ta
+                    tag i användarnamnet, e-mailadressen och lösenordet av varenda användare med följande kommando:
+                </p>
+                <code>
+                    <span><span class="keyword">SELECT</span> <span class="pointer">UserTable.Username</span>, <span class="pointer">UserTable.Email</span>, <span class="pointer">UserTable.Password</span> <span class="keyword">FROM</span> <span class="pointer">UserTable</span></span>
+                </code>
+                <p>
+                    Nu har anfallaren tillgång till all information om varenda användare, vilket inte är bra. För att undvika detta så
+                    finns det många olika saker man som utvecklare kan göra. T.ex. så kan man kolla i anropet efter selectors (<i>OR</i>, <i>AND</i>
+                    osv.) som inte får finnas med. Man kan även begränsa datan som skickas tillbaka, men det saktar för det mesta bara
+                    ned anfallet.
+                </p>
+                <p>Mer information om en SQL injektioner:</p>
+                <video controls>
+                    <source src="videos/Hacking Websites with SQL Injection - Computerphile.mp4" type="video/mp4">
+                </video>
+                <a target="_blank" href="https://www.youtube.com/watch?v=_jKylhJtPmI">Från: Hacking Websites with SQL Injection - Computerphile</a>
+                <h3>Cross-site scripting (XSS)</h3>
+                <p>
+                    Cross-site scripting (förkortning XSS) handlar om att användaren injicerar kod i t.ex. kommentarer som andra
+                    användare kommer läsa. Anledningen bakom anfallet är likt många andra; att stjäla data. Låt oss använda samma
+                    databas som vi använde i SQL injection exemplet ovan, fast vi ändrar lite på kommentar tabellen.
+                </p>
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th colspan="3">CommentTable</th>
+                            </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>AuthorForeignKey</th>
+                                <th>Comment</th>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>"God jul Pelle!"</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>"God jul du med Adam!"</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>"&lt;script&gt;alert('XSS inbrott!');&lt;script&gt; :)"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    <i>PostDate kolumnen är borttagen för enkelhetens skull.</i>
+                </p>
+                <p>
+                    Som vi nu ser så är Adams svar på Pelle annorlunda eftersom vi har inkluderat en &lt;script&gt; tagg.Script - taggen gör så att allt innanför taggen inte syns för läsaren, ändå fast det exekveras i bakgrunden.I detta fall så kommer Pelle få en textruta som säger "XSS inbrott!" när han ser kommentaren.Så här ser "attacken" ut i vanlig HTML:
+                </p>
+                <code>
+                    <span>
+                        <span class="keyword">&lt;script&gt;</span><br>
+                        <span class="pointer">&#09;alert</span>(<span class="string">"XSS inbrott!"</span>);<br>
+                        <span class="keyword">&lt;/script&gt;</span>
+                </code>
+                <p>
+                    Denna "attack" är såklart harmlös, men om Adam verkligen skulle vilja så skulle han t.ex. kunna ta Pelles cookies
+                    och spara dem på sin egen databas. För att undvika liknande attacker så kan utvecklarna göra ungefär samma saker som
+                    de bör göra i SQL injection exemplet: de bör kolla inmatningen och ta bort skadlig kod om de nu hittar någon sådan.
+                    Som användare går det att skydda sig mot sådana attacker genom att t.ex. stänga av JavaScript för vissa hemsidor
+                    eller helt enkelt stänga av JavaScript helt och hållet. Problemet är dock att de flesta dynamiska sidor (vissa
+                    statiska också) såsom Twitter, Facebook, YouTube osv. kräver att JavaScript ska vara påslaget för att de ska fungera
+                    som de ska. Ditt bästa val som användare är att hoppas på att utvecklarna bakom tjänsterna vet vad de gör, eller att
+                    helt enkelt inte surfa på internet (men det känns lite extremt).
+                </p>
+                <h3><a class="anchor" id="social-engineering"></a>Social engineering (speciellt nätfiske)</h3>
+                <p>
+                    <i>Social engineering</i> (eller social manipulation försvenskat) är när en person eller grupp manipulerar andra människor
+                    till att utföra vissa uppgifter som de egentligen inte ska. Ett av de vanligaste exemplen på social engineering är
+                    nätfiske (engelskans <i>phishing</i>). Nätfiske utförs när någon låtsas vara någon som de inte är. Detta kan t.ex. ske
+                    genom e-mail när en nätfiskare skickar en länk till <i>youtobe.com</i> istället för <i>youtube.com</i> vilket leder till en
+                    skamhemsida. Användaren som föll för tricket och tröck på länken kommer att bli frågad att logga in med lösenord och
+                    användarnamn. Det användaren inte vet om är att de är på <i>youtobe.com</i> som skickar inloggningsdatan till en databas
+                    för att användas senare. Användaren får helt enkelt en "Login not available at this moment." error, något som de
+                    säkerligen inte tänker på och fortsätter med sin dag. För att skydda sig mot dessa typer av attacker så måste
+                    användare bli mer vaksamma när de är på webben genom att granska länkarna efter små stavfel och liknande bokstäver.
+                </p>
+                <h2><a class="anchor" id="vardagen"></a>För vardagen</h2>
+                <p>
+                    För den vardagliga användaren så finns det inte så mycket att göra förutom att vara försiktig med vart hen anger
+                    privata detaljer, samt vart hen laddar ned programvara från. Det är också starkt rekommenderat att alla som har
+                    datorer laddar ned åtminstone två olika antivirusprogram som de låter söka igenom datorn dagligen. Detta bör minska
+                    risken för de mest välkända skadliga programmen, men det är såklart inte en hundraprocentig garanti.
+                </p>
+                <h2><a class="anchor" id="utvecklare"></a>För utvecklare</h2>
+                <p>
+                    Utvecklare har, jämfört med vardagliga användare, en hel del fler saker att tänka på när det gäller säkerhet på
+                    webben. För det första så bör man som utvecklare vara väl påläst och skicklig i datahantering och webbsäkerhet innan
+                    man gräver sig ned i sådana fält. Utvecklare bör också testa sina applikationer genom att simulera attacker utifrån.
+                    När det kommer till lösenord så bör utvecklare också veta hur man sparar dem på ett säkert sätt. Ett av sätten är
+                    genom att hash:a (kryptera) lösenorden. Att hash:a ett lösenord betyder att man gör om en sträng av text till en
+                    massa symboler, vars nyckel är hemlig för alla andra förutom dig själv.
+                </p>
+                <img alt="hash example" src="http://www.paradigm.ac.uk/images/figure17.gif">
+                <p><i>Exempel på en hashfunktion som använder sig utav SHA-1 metoden.</i></p>
+                <p>Video på hur man <strong>inte</strong> sparar lösenord:</p>
+                <video controls>
+                    <source src="videos/How NOT to Store Passwords! - Computerphile.mp4" type="video/mp4">
+                </video>
+                <a target="_blank" href="https://www.youtube.com/watch?v=8ZtInClXe1Q">Från: How NOT to Store Passwords! - Computerphile</a>
+                <h2>Hash test</h2>
+                <p>Testa på en hash kryptering!</p>
+                <input id="hash-input" type="text" placeholder="Skriv något" oninput="hash(this)">
+                <p id="hash-output">Resultat: 0</p>
+                <h2><a class="anchor" id="framtiden"></a>Framtiden</h2>
+                <p>
+                    Med tanke på hur snabbt teknologin utvecklas idag så är det inte konstigt om vi i framtiden kommer ha massiva problem
+                    med säkerheten på webben. Med hjälp av artificiell intelligens så kan skadlig programvara mutera och sprida sig ännu
+                    snabbare än vad det gör idag. Framtiden för webben kvarstår att se, men en sak är säker: utvecklingen kommer att gå
+                    snabbt, och om du inte är redo så kommer du inte heller ha tid att skydda dig själv.
+                </p>
             </article>
+            <div id="page-side-nav-container">
+                <nav id="page-side-nav" style="top: 50%">
+                    <ul>
+                        <li><a href="#introduktion"></a></li>
+                        <li><a href="#uppkomst"></a></li>
+                        <li><a href="#samtid"></a></li>
+                        <li><a href="#malware"></a></li>
+                        <li><a href="#kod-injektion"></a></li>
+                        <li><a href="#social-engineering"></a></li>
+                        <li><a href="#vardagen"></a></li>
+                        <li><a href="#utvecklare"></a></li>
+                        <li><a href="#framtiden"></a></li>
+                    </ul>
+                </nav>
+            </div>
         </section>
         <footer>
             <h3>Emil Engelin 2019/2020 &copy;</h3>
         </footer>
     </div>
 
-    <script src="scripts/jquery-3.4.1.min.js"></script>
-    <script src="scripts/core.js"></script>
+    <script defer src="scripts/jquery-3.4.1.min.js"></script>
+    <script defer src="scripts/core.js"></script>
+    <script defer src="scripts/säkerhet.js"></script>
 </body>
 </html>

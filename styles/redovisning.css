@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "turret-road";
-  src: url("../fonts/Turret_Road/TurretRoad-Regular.ttf");
+  font-family: "open-sans";
+  src: url("../fonts/Open_Sans/OpenSans-Regular.ttf");
 }
 
 @font-face {
@@ -68,7 +68,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: questrial;
+  font-family: questrial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -100,6 +100,13 @@ body {
 
 .wide {
   width: 100vw;
+}
+
+@media (min-width: 1400px) {
+  .anchor {
+    position: relative;
+    top: -65px;
+  }
 }
 
 .desktop-exclude {
@@ -448,6 +455,70 @@ div.parallax-divider ~ div.parallax-block {
   }
 }
 
+#page-side-nav-container {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 200px);
+  top: 0;
+  margin: 100px 0;
+  pointer-events: none;
+}
+
+#page-side-nav-container #page-side-nav {
+  position: absolute;
+  right: 25px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: right;
+  display: none;
+  pointer-events: all;
+}
+
+@media (min-width: 768px) {
+  #page-side-nav-container #page-side-nav {
+    right: 50px;
+  }
+}
+
+@media (min-width: 1400px) {
+  #page-side-nav-container #page-side-nav {
+    right: 100px;
+  }
+}
+
+#page-side-nav-container #page-side-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+#page-side-nav-container #page-side-nav ul li {
+  margin: 10px 0;
+}
+
+#page-side-nav-container #page-side-nav ul li a {
+  border-radius: 25px;
+  border: 2px solid white;
+  width: 13px;
+  height: 13px;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  display: inline-block;
+}
+
+@media (min-width: 1400px) {
+  #page-side-nav-container #page-side-nav ul li a.selected {
+    background-color: orangered;
+    border-color: orangered;
+  }
+  #page-side-nav-container #page-side-nav ul li a:hover {
+    background-color: white;
+  }
+  #page-side-nav-container #page-side-nav ul li a.selected:hover {
+    background-color: orangered;
+  }
+}
+
 footer {
   width: 100%;
   background-color: #080808;
@@ -580,69 +651,5 @@ body section.content-block article.redovisning-container a::after {
 
 body section.content-block article.redovisning-container a:hover::after {
   width: 100%;
-}
-
-#page-side-nav-container {
-  position: absolute;
-  width: 100%;
-  height: calc(100% - 200px);
-  top: 0;
-  margin: 100px 0;
-  pointer-events: none;
-}
-
-#page-side-nav-container #page-side-nav {
-  position: absolute;
-  right: 25px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  text-align: right;
-  display: none;
-  pointer-events: all;
-}
-
-@media (min-width: 768px) {
-  #page-side-nav-container #page-side-nav {
-    right: 50px;
-  }
-}
-
-@media (min-width: 1400px) {
-  #page-side-nav-container #page-side-nav {
-    right: 100px;
-  }
-}
-
-#page-side-nav-container #page-side-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-#page-side-nav-container #page-side-nav ul li {
-  margin: 10px 0;
-}
-
-#page-side-nav-container #page-side-nav ul li a {
-  border-radius: 25px;
-  border: 2px solid white;
-  width: 13px;
-  height: 13px;
-  -webkit-transition: all 0.25s;
-  transition: all 0.25s;
-  display: inline-block;
-}
-
-@media (min-width: 1400px) {
-  #page-side-nav-container #page-side-nav ul li a.selected {
-    background-color: orangered;
-    border-color: orangered;
-  }
-  #page-side-nav-container #page-side-nav ul li a:hover {
-    background-color: white;
-  }
-  #page-side-nav-container #page-side-nav ul li a.selected:hover {
-    background-color: orangered;
-  }
 }
 /*# sourceMappingURL=redovisning.css.map */
