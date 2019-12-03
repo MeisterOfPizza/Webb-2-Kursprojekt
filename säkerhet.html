@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,7 +76,7 @@
                     att vi måste konstant hålla oss uppdaterade mot hot genom att t.ex. uppfinna nya algoritmer och system som kan
                     skydda oss. I avseende till globaliseringen och mass spridd tillgång till internet genom olika tjänster och system
                     skapas ett snabbt muterande fält som är svårt att hålla sig uppdaterad med. Nu för tiden kräver många företag som
-                    specialiserar sig i förvarningen av personlig data konstant övervakning och underhållning av sina system. Denna
+                    specialiserar sig i förvaringen av personlig data konstant övervakning och underhållning av sina system. Denna
                     konstanta övervakning och underhållning kostar givetvis enormt mycket pengar samt flera dussintal (om inte
                     hundratals) utvecklare, något som de flesta företagen inte har råd med. Därav finns det en stor risk att många
                     företag endast gör det minsta möjliga utan att bryta lagen när det kommer till förvaringen av personlig data.
@@ -109,7 +109,7 @@
                     För att ta bort malware krävs olika antivirusprogram såsom ESET Nod32 eller Malwarebytes (som nämnt ovan). Det är
                     näst intill omöjligt att manuellt leta efter malware eftersom de maskerar sig på avancerade sätt, samt att
                     teknologien och metoderna att göra så ändras dagligen. Antivirusprogram använder sig av algoritmer och "brute force"
-                    metoder för att upptäcka potentiella skadliga program och filer, något som förfinas dag för dag, men som samtidigt
+                    metoder för att upptäcka potentiellt skadliga program och filer, något som förfinas dag för dag, men som samtidigt
                     blir svårare eftersom skaparna av de skadliga programmen också ändrar sina program och metoder dagligen.
                 </p>
                 <h3>Virus</h3>
@@ -123,7 +123,7 @@
                 <p>
                     En bakdörr (kallas <i>backdoor</i> från engelskan) används primärt för att få tillgång till system och filer som man
                     egentligen inte ska ha tillgång till. Dessa bakdörrar kan sedan användas för att installera framtida bakdörrar som
-                    är ännu mera avancerade och svårhittade, något som gör det till ett stort hot. Bakdörrar kan bli installerade genom
+                    är mer avancerade och svårhittade, något som gör det till ett stort hot. Bakdörrar kan bli installerade genom
                     trojanska hästar (se nedan) eller helt enkelt genom fil överföringssystem.
                 </p>
                 <h3>Trojanska hästar</h3>
@@ -144,7 +144,7 @@
                 </p>
                 <h2><a class="anchor" id="kod-injektion"></a>Kod injektion</h2>
                 <p>
-                    Skadlig program är som sagt inte det enda hotet på internet. Kod injektion används oftast för att få tillgång till
+                    Skadlig programvara är som sagt inte det enda hotet på internet. Kod injektion används oftast för att få tillgång till
                     data som man egentligen inte ska ha tillgång till genom att, som namnet beskriver, injicera kod som exekveras av ett
                     databasprogram, såsom <i>SQL</i> (Structured Query Language). Det finns många olika sätt att hindra ett sådant anfall genom
                     att analysera inmatningen av användare. Dock är det väldigt enkelt att missa en potentiell anfallsvinkel när man
@@ -155,14 +155,14 @@
                     En SQL injection kan ske när utvecklarna inte har implementerat tillräckligt med säkerhetsåtgärder för att hantera
                     databas anropningar (<i>GET</i> anropningar som de kallas) från klientens webbläsare. Denna typen av attack görs för att få
                     en data dump av varierande storlek, från liten till massiv. En data dump är när data "dumpas" (slängs, kastas) på
-                    användaren. Attacken tillåter anfallaren att ändra, ta bort, eller lägga till data.
+                    användaren. Attacken tillåter anfallaren att ändra, ta bort, och lägga till data.
                 </p>
                 <p>
-                    SQL är sätt att spara, ta hand om och nå data på ett smart och snabbt sätt. Det är alltså inte en server. Det finns
-                    flertal olika SQL program, såsom <i>MySQL</i>, <i>Microsoft SQL</i>. Administratörer och program som använder sig utav SQL
+                    SQL är ett sätt att spara, ta hand om och nå data på ett smart och snabbt sätt. Det är alltså inte en server. Det finns
+                    flertal olika SQL program, såsom <i>MySQL</i> och <i>Microsoft SQL</i>. Administratörer och program som använder sig utav SQL
                     databaser kan ange olika instruktioner för att hämta, ta bort och lägga till data. Datan sparas vanligtvis i
-                    tabeller med unika namn, där varje "objekt" är indexerat 0 till oändligt. Varje objekt (rad eller kolumn) är fylld
-                    med olika fält med sina egna värden, eller med <i>foreign keys</i> som pekar på andra tabeller och objekt.
+                    tabeller med unika namn, där varje "objekt" är indexerat 0 till oändligt. Varje objekt (rad) är fylld
+                    med olika fält med sina egna värden (kolumner), eller med <i>foreign keys</i> som pekar på andra tabeller och objekt.
                 </p>
                 <p>
                     Ett exempel på en databas som sparar användare (användarnamn, e-mail och lösenord) och vilka kommentarer som de
@@ -242,7 +242,7 @@
                     SQL kommando skapas och exekveras. Kommandot lyder:
                 </p>
                 <code>
-                    <span><span class="keyword">SELECT</span> <span class="pointer">*</span> <span class="keyword">FROM</span> <span class="pointer">UserTable</span> <span class="keyword">WHERE</span> <span class="pointer">UserTable.ID</span> = <span class="int">2</span> <span class="keyword"></span>
+                    <span><span class="keyword">SELECT</span> <span class="pointer">*</span> <span class="keyword">FROM</span> <span class="pointer">CommentTable</span> <span class="keyword">WHERE</span> <span class="pointer">CommentTable.ID</span> = <span class="int">2</span> <span class="keyword"></span></span>
                 </code>
                 <p>
                     Kommandot exekveras och ger tillbaka kommentaren (<i>ID</i>, <i>AuthorForeignKey</i>, <i>Comment</i> och <i>PostDate</i>). Det finns dock en
@@ -252,13 +252,13 @@
                     om 1=1 är sant (vilket det är). Därav skickar servern tillbaka alla kommentarer. Kommandot skulle se ut så här:
                 </p>
                 <code>
-                    <span><span class="keyword">SELECT</span> <span class="pointer">*</span> <span class="keyword">FROM</span> <span class="pointer">UserTable</span> <span class="keyword">WHERE</span> <span class="pointer">UserTable.ID</span> = <span class="int">0</span> <span class="keyword">OR</span> <span class="string">"1"</span>=<span class="string">"1"</span></span>
+                    <span><span class="keyword">SELECT</span> <span class="pointer">*</span> <span class="keyword">FROM</span> <span class="pointer">CommentTable</span> <span class="keyword">WHERE</span> <span class="pointer">CommentTable.ID</span> = <span class="int">0</span> <span class="keyword">OR</span> <span class="string">"1"</span>=<span class="string">"1"</span></span>
                 </code>
                 <p>
                     Detta exempel verkar inte farligt, men det är det. Om du har hundratusentals kommentarer kommer servern säkerligen
                     krascha när den försöker skicka alla kommentarer, vilket kan leda till att dina användare inte kan använda din
                     tjänst förrän du har fixat problemet. Det kan även leda till att anfallaren får tag i kommentarer som kanske är
-                    privata eller för vänner endast.
+                    privata eller som är för vänner endast.
                 </p>
                 <p>
                     I ett annat exempel så kanske anfallaren har full kontroll över databasen och kan alltså exekvera vilket kommando
@@ -274,9 +274,9 @@
                     osv.) som inte får finnas med. Man kan även begränsa datan som skickas tillbaka, men det saktar för det mesta bara
                     ned anfallet.
                 </p>
-                <p>Mer information om en SQL injektioner:</p>
+                <p>Mer information om SQL injektioner:</p>
                 <video controls>
-                    <source src="videos/Hacking Websites with SQL Injection - Computerphile.mp4" type="video/mp4">
+                    <source src="videos/Hacking%20Websites%20with%20SQL%20Injection%20-%20Computerphile.mp4" type="video/mp4">
                 </video>
                 <a target="_blank" href="https://www.youtube.com/watch?v=_jKylhJtPmI">Från: Hacking Websites with SQL Injection - Computerphile</a>
                 <h3>Cross-site scripting (XSS)</h3>
@@ -325,6 +325,7 @@
                         <span class="keyword">&lt;script&gt;</span><br>
                         <span class="pointer">&#09;alert</span>(<span class="string">"XSS inbrott!"</span>);<br>
                         <span class="keyword">&lt;/script&gt;</span>
+                    </span>
                 </code>
                 <p>
                     Denna "attack" är såklart harmlös, men om Adam verkligen skulle vilja så skulle han t.ex. kunna ta Pelles cookies
@@ -368,7 +369,7 @@
                 <p><i>Exempel på en hashfunktion som använder sig utav SHA-1 metoden.</i></p>
                 <p>Video på hur man <strong>inte</strong> sparar lösenord:</p>
                 <video controls>
-                    <source src="videos/How NOT to Store Passwords! - Computerphile.mp4" type="video/mp4">
+                    <source src="videos/How%20NOT%20to%20Store%20Passwords!%20-%20Computerphile.mp4" type="video/mp4">
                 </video>
                 <a target="_blank" href="https://www.youtube.com/watch?v=8ZtInClXe1Q">Från: How NOT to Store Passwords! - Computerphile</a>
                 <h2>Hash test</h2>

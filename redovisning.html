@@ -65,18 +65,20 @@
                     <a class="anchor" id="projektplan"></a>
                     <span>Projektplan</span>
                 </h2>
-                <p>Jag har tänkt mig att webbsidan ska ha 4 st sidor, där varje sida har en enhetlig design med likadana färger
-                    (svart, vitt, blått och magenta) sam samma layout (förutom spelet). Generella designen påminner väldigt
-                    mycket om en minimalistisk design med två starka färgglada färger som används mer för utseendet samt två
-                    motsatta färger (svart och vitt) som används för för text och knappar. Detta eftersom kontrasten mellan
-                    svart och vitt samt bakgrunden gör det enkelt för användaren att hitta de viktiga delarna på sidan (t.ex
-                    knappar).
+                <p>
+                    Jag har tänkt mig att webbsidan ska ha 5 st sidor, där varje sida har en enhetlig design med likadana 
+                    färger (svart, vitt, orange, blått och magenta) samt samma layout (förutom spelet). Generella designen
+                     påminner väldigt mycket om en minimalistisk design med två starka färgglada färger (orange och blått/magenta) 
+                     som används mer för utseendet samt två motsatta färger (svart och vitt) som används för text och knappar. 
+                     Detta eftersom kontrasten mellan svart och vitt samt bakgrunden gör det enkelt för användaren att hitta 
+                     de viktiga delarna på sidan (t.ex knappar).
                 </p>
                 <h2>
                     <a class="anchor" id="bilder"></a>
                     <span>Bilder</span>
                 </h2>
-                <p>De stora bilderna som förekommer sällan (såsom bakgrund, foton, skärmdumpar osv.) kommer att vara JPEG:s
+                <p>
+                    De stora bilderna som förekommer sällan (såsom bakgrund, foton, skärmdumpar osv.) kommer att vara JPEG:s
                     eftersom den sparar datan i ett ”lossy” (löst) format vilket ger en sämre upplösning i utbyte mot mindre
                     filstorlekar. PNG:s kommer att användas för de mindre bilderna (t.ex loggor) eftersom de är det motsatta av
                     JPEG:s vilket gör dem bra att använda när man ska ha högupplösta bilder. Eftersom PNG:s oftast är i mindre
@@ -86,23 +88,43 @@
                     <a class="anchor" id="webbläsare"></a>
                     <span>Webbläsare</span>    
                 </h2>
-                <p>Jag ska testa sidan i Chrome och Firefox. Sidan kommer att använda två olika typsnitt, ett till spelet och
-                    ett till resten av sidan.
+                <p>
+                    Jag ska testa sidan i Chrome och Firefox. Sidan kommer att använda två olika typsnitt, ett till säkerhets texten 
+                    och ett till resten av sidan. Anledningen till varför jag använder ett annat typsnitt till en lång text är 
+                    eftersom det primära typsnittet är svårt att läsa när det blir mycket text.
                 </p>
                 <h2>
                     <a class="anchor" id="kravspecifikationen"></a>
                     <span>Kravspecifikationen</span>
                 </h2>
-                <p>Kravspecifikationen har jag lyckats följt genom att ha en klar plan nedskriven som jag alltid kunde kolla på
+                <p>
+                    Kravspecifikationen har jag lyckats följt genom att ha en klar plan nedskriven som jag alltid kunde kolla på
                     om jag glömde bort något.
                 </p>
                 <h2>
                     <a class="anchor" id="utvärdering"></a>
                     <span>Utvärdering</span>
                 </h2>
-                <p>Det enda som var utmanande var spelet då jag inte har implementerat ett spel i 3D på webben tidigare. Därav
-                    så har jag lärt mig mer om ramverket <a href="https://threejs.org/">Three.js</a> samt hur OpenGL fungerar på
-                    en browser. Resultatet är jag väldigt nöjd med, och det är något som jag även vill förbättra senare.
+                <p>
+                    Det mest utmanande var att implementera spelet eftersom jag behövde lära mig ett helt nytt ramverk som heter <a href="https://threejs.org/">Three.js</a>. 
+                    Three.js sköter grafiken åt mig dock så behövde jag implementera logiken själv. Logiken var inte så svår dock så tog det 
+                    långt tid eftersom jag behövde lista ut vad vissa saker gjorde. Som tur är så är Three.js väldigt likt Unity, något som 
+                    jag har jobbat länge i, vilket underlättade när jag behövde implementera matematiken i spelet. Jag behövde också modifiera 
+                    en shader för att få det utseendet som jag ville ha på spelet. En shader är en fil som talar om för grafikkortet vad 
+                    den ska göra med alla pixlar på skärmen. Att modifiera shadern var inte särskilt svårt även om det tog lite tid eftersom 
+                    den ska vara skriven i OpenGL:s shaderspråk, vilket ser annorlunda ut beroende på vart man ska använda shadern. 
+                    Jag har lärt mig mer om avancerad JavaScript, speciellt ECMAScript 6 eftersom jag behövde optimera koden för att få spelet 
+                    att exekveras snabbare. Från detta projekt har jag också lärt mig SCSS, något som jag tidigare inte kunde.
+                </p>
+                <p>
+                    Ett problem som jag hade tidigt i projektet var att jag inte visste så mycket om Three.js, vilket ledde till att jag 
+                    inte riktigt visste vart jag skulle börja. Jag löste detta problem genom att läsa på om ramverket på deras hemsida, 
+                    men också genom att examinera spel projekt som andra personer har gjort med samma ramverk.
+                </p>
+                <p>
+                    Resultatet är något som jag är väldigt nöjd med. Spelet (och resten av hemsidan) ser snygg ut, och fungerar väldigt bra. 
+                    Jag är speciellt nöjd med spelet eftersom det tog en hel del kunskap att göra, även om det är så litet. JavaScript är inte 
+                    heller det bästa språket att skriva ett spel i heller.
                 </p>
             </article>
             <div id="page-side-nav-container">
